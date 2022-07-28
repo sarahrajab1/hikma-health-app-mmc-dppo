@@ -14,7 +14,30 @@ import radioButtons from './shared/RadioButtons';
 
 
 export const LabInvestigationDisplay = (metadataObj, language) => {
-  return ()
+  return (<View>
+      <Text>HbA1c: {metadataObj.hbA1c} </Text>
+      <Text>Fating blood glucose: {metadataObj.fatingGlucose} </Text>
+      <Text>Random blood glucose: {metadataObj.randomGlucose}</Text>
+      <Text>Post-meal blood glucose: {metadataObj.postMealGlucose}</Text>
+      <Text>Creatinine: {metadataObj.creatinine} </Text>
+      <Text>eGFR: {metadataObj.egfr} </Text>
+      <Text>Total cholesterol: {metadataObj.totalCholesterol} </Text>
+      <Text>LDL cholesterol: {metadataObj.ldlCholesterol} </Text>
+      <Text>HDL: {metadataObj.hdl} </Text>
+      <Text>T.G.: {metadataObj.tg} </Text>
+      <Text>S. Sodium: {metadataObj.sodium} </Text>
+      <Text>S. Potassium: {metadataObj.potassium} </Text>
+      <Text>Haemoglobin: {metadataObj.haemoglobin} </Text>
+      <Text>Urinary microalbumin to creatinine ratio (Urinary ACR): {metadataObj.urinaryAcr} </Text>
+      <Text>Urine dipstick for protein: {metadataObj.dipstick} </Text>
+      <Text>Urine analysis: </Text>
+      <Text>Protein: {metadataObj.urineProtein} </Text>
+      <Text>Sugar: {metadataObj.urineSugar} </Text>
+      <Text>Ketones: {metadataObj.urineKetones} </Text>
+      <Text>Microalbuminuria: {metadataObj.urineMicroalbuminuria} </Text>
+      <Text>ECG: {metadataObj.ecg} </Text>
+      <Text>Other investigations: {metadataObj.otherInvestigations} </Text>
+    </View>)
 }
 
 const LabInvestigation = (props) => {

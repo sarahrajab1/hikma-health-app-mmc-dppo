@@ -12,7 +12,13 @@ import Header from './shared/Header';
 import radioButtons from './shared/RadioButtons';
 
 export const MedicineDisplay = (metadataObj, language) => {
-  return ('')
+  return (<View>
+    <Text>On Stain: {metadataObj.onStain} </Text>
+    <Text>Name of statin and dose: {metadataObj.stainNameDose} </Text>
+    <Text>Current diabetes medications and doses: {metadataObj.diabetes}</Text>
+    <Text>Current HTN medications and doses: {metadataObj.htn}</Text>
+    <Text>Current non-diabetes medications: {metadataObj.nonDiabetes} </Text>
+  </View>)
 }
 
 const Medicine = (props) => {
