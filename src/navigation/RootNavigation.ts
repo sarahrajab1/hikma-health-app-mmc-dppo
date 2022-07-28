@@ -24,6 +24,20 @@ import EditMedicalHistory from '../components/EditMedicalHistory';
 import EditPhysiotherapy from '../components/EditPhysiotherapy';
 import EditMedicine from '../components/EditMedicine';
 import SnapshotList from '../components/SnapshotList';
+import DmHistory from '../components/DmHistory';
+import EditDmHistory from '../components/EditDmHistory'
+import ClinicalExamination from '../components/ClinicalExamination'
+import EditClinicalExamination from '../components/EditClinicalExamination'
+import EndocrinologistCases from '../components/EndocrinologistCases'
+import EditEndocrinologistCases from '../components/EditEndocrinologistCases'
+import FootCareExamination from '../components/FootCareExamination'
+import EditFootCareExamination from '../components/EditFootCareExamination'
+import OphthalmologyExamination from '../components/OphthalmologyExamination'
+import EditOphthalmologyExamination from '../components/EditOphthalmologyExamination'
+import Referrals from '../components/Referrals'
+import EditReferrals from '../components/EditReferrals'
+import LabInvestigation from '../components/LabInvestigation'
+import EditLabInvestigation from '../components/EditLabInvestigation'
 
 const rootNavigator = createStackNavigator(
   {
@@ -180,7 +194,119 @@ const rootNavigator = createStackNavigator(
         title: `SnapshotList`,
         header: null
       })
-    }
+      },
+      DmHistory: {
+        screen: DmHistory,
+        navigationOptions: () => ({
+          title: `DmHistory`,
+          header: null
+        })
+      },
+      EditDmHistory: {
+        screen: EditDmHistory,
+        navigationOptions: () => ({
+          title: `EditDmHistory`,
+          header: null
+        })
+      },
+      ClinicalExamination: {
+        screen: ClinicalExamination,
+        navigationOptions: () => ({
+          title: `ClinicalExamination`,
+          header: null
+        })
+      },
+      EditClinicalExamination: {
+        screen: EditClinicalExamination,
+        navigationOptions: () => ({
+          title: `EditClinicalExamination`,
+          header: null
+        })
+      },
+      EndocrinologistCases: {
+        screen: EndocrinologistCases,
+        navigationOptions: () => ({
+          title: `EndocrinologistCases`,
+          header: null
+        })
+      },
+      EditEndocrinologistCases: {
+        screen: EditEndocrinologistCases,
+        navigationOptions: () => ({
+          title: `EditEndocrinologistCases`,
+          header: null
+        })
+      },
+      FootCareExamination: {
+        screen: FootCareExamination,
+        navigationOptions: () => ({
+          title: `FootCareExamination`,
+          header: null
+        })
+      },
+      EditFootCareExamination: {
+        screen: EditFootCareExamination,
+        navigationOptions: () => ({
+          title: `EditFootCareExamination`,
+          header: null
+        })
+      },
+      OphthalmologyExamination: {
+        screen: OphthalmologyExamination,
+        navigationOptions: () => ({
+          title: `OphthalmologyExamination`,
+          header: null
+        })
+      },
+      EditOphthalmologyExamination: {
+        screen: EditOphthalmologyExamination,
+        navigationOptions: () => ({
+          title: `EditOphthalmologyExamination`,
+          header: null
+        })
+      },
+      FootCareExamination: {
+        screen: FootCareExamination,
+        navigationOptions: () => ({
+          title: `FootCareExamination`,
+          header: null
+        })
+      },
+      EditFootCareExamination: {
+        screen: EditFootCareExamination,
+        navigationOptions: () => ({
+          title: `EditFootCareExamination`,
+          header: null
+        })
+      },
+      Referrals: {
+        screen: Referrals,
+        navigationOptions: () => ({
+          title: `Referrals`,
+          header: null
+        })
+      },
+      EditReferrals: {
+        screen: EditReferrals,
+        navigationOptions: () => ({
+          title: `EditReferrals`,
+          header: null
+        })
+      },
+      LabInvestigation: {
+        screen: LabInvestigation,
+        navigationOptions: () => ({
+          title: `LabInvestigation`,
+          header: null
+        })
+      },
+      EditLabInvestigation: {
+        screen: EditLabInvestigation,
+        navigationOptions: () => ({
+          title: `EditLabInvestigation`,
+          header: null
+        })
+      },
   },
   {
     initialRouteName: 'Home'

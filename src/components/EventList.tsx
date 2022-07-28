@@ -11,6 +11,14 @@ import { ExaminationDisplay } from "./Examination";
 import { MedicineDisplay } from "./Medicine";
 import { MedicalHistoryDisplay } from "./MedicalHistory";
 import { PhysiotherapyDisplay } from "./Physiotherapy";
+import { DmHistoryDisplay } from "./DmHistory";
+import { ClinicalExaminationDisplay } from "./ClinicalExamination";
+import { EndocrinologistCasesDisplay } from "./EndocrinologistCases";
+import { FootCareExaminationDisplay } from "./FootCareExamination";
+import { LabInvestigationDisplay } from "./LabInvestigation";
+import { OphthalmologyExaminationDisplay } from "./OphthalmologyExamination";
+import { ReferralsDisplay } from "./Referrals";
+
 import Header from "./shared/Header";
 
 const EventList = (props) => {
@@ -94,6 +102,34 @@ const EventList = (props) => {
       case EventTypes.Physiotherapy:
         eventTypeText = LocalizedStrings[language].physiotherapy
         display = PhysiotherapyDisplay(metadataObj, language)
+        break
+      case EventTypes.DmHistory:
+        eventTypeText = 'DM History'
+        display = DmHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.ClinicalExamination:
+          eventTypeText = 'Clinical Examination'
+          display = ClinicalExaminationDisplay(metadataObj, language)
+          break
+      case EventTypes.EndocrinologistCases:
+        eventTypeText = 'Endocrinologist Cases'
+        display = EndocrinologistCasesDisplay(metadataObj, language)
+        break
+      case EventTypes.FootCareExamination:
+        eventTypeText = 'Foot Care Examination'
+        display = FootCareExaminationDisplay(metadataObj, language)
+        break
+      case EventTypes.LabInvestigation:
+        eventTypeText = 'Lab Data and Investigations:'
+        display = LabInvestigationDisplay(metadataObj, language)
+        break
+      case EventTypes.Referrals:
+        eventTypeText = 'Referrals'
+        display = ReferralsDisplay(metadataObj, language)
+        break
+      case EventTypes.OphthalmologyExamination:
+        eventTypeText = 'Ophthalmology Examination'
+        display = OphthalmologyExaminationDisplay(metadataObj, language)
         break
       default:
         eventTypeText = item.event_type
