@@ -6,32 +6,59 @@ import {
 import { database } from "../storage/Database";
 import styles from './Style';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
-import radioButtons from './shared/RadioButtons';
 import Header from './shared/Header';
+
+export const Icd10Diagnosis = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label="Diagnosis From ICD-10" />
+      <Picker.Item value='Certain infectious and parasitic diseases' label="Certain infectious and parasitic diseases" />
+      <Picker.Item value='Neoplasms' label='Neoplasms' />
+      <Picker.Item value='Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism' label='Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism' />
+      <Picker.Item value='Endocrine, nutritional and metabolic diseases' label='Endocrine, nutritional and metabolic diseases' />
+      <Picker.Item value='Mental, Behavioral and Neurodevelopmental disorders' label='Mental, Behavioral and Neurodevelopmental disorders' />
+      <Picker.Item value='Diseases of the nervous system' label='Diseases of the nervous system' />
+      <Picker.Item value='Diseases of the eye and adnexa' label='Diseases of the eye and adnexa' />
+      <Picker.Item value='Diseases of the ear and mastoid process' label='Diseases of the ear and mastoid process' />
+      <Picker.Item value='Diseases of the circulatory system' label='Diseases of the circulatory system' />
+      <Picker.Item value='Diseases of the respiratory system' label='Diseases of the respiratory system' />
+      <Picker.Item value='Diseases of the digestive system' label='Diseases of the digestive system' />
+      <Picker.Item value='Diseases of the skin and subcutaneous tissue' label='Diseases of the skin and subcutaneous tissue' />
+      <Picker.Item value='Diseases of the musculoskeletal system and connective tissue' label='Diseases of the musculoskeletal system and connective tissue' />
+      <Picker.Item value='Diseases of the genitourinary system' label='Diseases of the genitourinary system' />
+      <Picker.Item value='Pregnancy, childbirth and the puerperium' label='Pregnancy, childbirth and the puerperium' />
+      <Picker.Item value='Certain conditions originating in the perinatal period' label='Certain conditions originating in the perinatal period' />
+      <Picker.Item value='Congenital malformations, deformations and chromosomal abnormalities' label='Congenital malformations, deformations and chromosomal abnormalities' />
+      <Picker.Item value='Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified' label='Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified' />
+      <Picker.Item value='Injury, poisoning and certain other consequences of external causes' label='Injury, poisoning and certain other consequences of external causes' />
+      <Picker.Item value='Codes for special purposes' label='Codes for special purposes' />
+      <Picker.Item value='External causes of morbidity' label='External causes of morbidity' />
+      <Picker.Item value='Factors influencing health status and contact with health services' label='Factors influencing health status and contact with health services' />
+    </Picker>
+  )
+}
 
 const EditExamination = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
   
-  const [examination, setExamination] = useState(null);
-  const [generalObservations, setGeneralObservations] = useState(null);
-  const [diagnosis, setDiagnosis] = useState(null);
-  const [treatment, setTreatment] = useState(null);
-  const [covid19, setCovid19] = useState(null);
-  const [referral, setReferral] = useState(null);
-  const [referralText, setReferralText] = useState(null);
+  const [examinationComplaint, setExaminationComplaint] = useState(null);
+  const [activeConditions, setActiveConditions] = useState(null);
+  const [inactiveConditions, setInactiveConditions] = useState(null);
+  const [illnessHistory, setIllnessHistory] = useState(null);
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
-      setExamination(metadataObj.examination)
-      setGeneralObservations(metadataObj.generalObservations)
-      setDiagnosis(metadataObj.diagnosis)
-      setTreatment(metadataObj.treatment)
-      setCovid19(metadataObj.covid19)
-      setReferral(metadataObj.referral)
-      setReferralText(metadataObj.referralText)
+      setExaminationComplaint(metadataObj.examinationComplaint)
+      setActiveConditions(metadataObj.activeConditions)
+      setInactiveConditions(metadataObj.inactiveConditions)
+      setIllnessHistory(metadataObj.illnessHistory)
     }
   }, [props])
 
@@ -40,13 +67,10 @@ const EditExamination = (props) => {
       event.id,
       JSON.stringify({
         doctor: userName,
-        examination,
-        generalObservations,
-        diagnosis,
-        treatment,
-        covid19,
-        referral,
-        referralText,
+        examinationComplaint,
+        activeConditions,
+        inactiveConditions,
+        illnessHistory
       })
     ).then((response) => props.navigation.navigate('EventList', { events: response, language }))
   };
@@ -60,61 +84,33 @@ const EditExamination = (props) => {
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].examination}</Text>
         </View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].examination}</Text>
+          <Text style={{ color: '#FFFFFF' }}>Present Complaint:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setExamination(text)}
-            value={examination}
+            onChangeText={(text) => setExaminationComplaint(text)}
+            value={examinationComplaint}
           />
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].generalObservations}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Active Conditions:</Text>
+        </View>
+        {Icd10Diagnosis(activeConditions, setActiveConditions, language)}
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Inactive Conditions:</Text>
+        </View>
+        {Icd10Diagnosis(inactiveConditions, setInactiveConditions, language)}
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>History of Present illness:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setGeneralObservations(text)}
-            value={generalObservations}
+            onChangeText={(text) => setIllnessHistory(text)}
+            value={illnessHistory}
           />
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].diagnosis}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setDiagnosis(text)}
-            value={diagnosis}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].treatment}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setTreatment(text)}
-            value={treatment}
-          />
-        </View>
-        <View style={styles.responseRow}>
-          {radioButtons({ field: covid19, action: setCovid19, prompt: LocalizedStrings[language].covid19, language })}
-        </View>
-        <View style={styles.responseRow}>
-          {radioButtons({ field: referral, action: setReferral, prompt: LocalizedStrings[language].referral, language })}
-        </View>
-        {!!referral ?
-          <View style={[styles.responseRow, { paddingTop: 0, paddingHorizontal: 0 }]}>
-            <TextInput
-              style={styles.inputs}
-              onChangeText={(text) => setReferralText(text)}
-              value={referralText}
-            />
-          </View> :
-          null
-        }
         <View style={{ alignItems: 'center' }}>
           <Button
             title={LocalizedStrings[language].save}

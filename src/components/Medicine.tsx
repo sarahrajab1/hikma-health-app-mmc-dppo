@@ -9,45 +9,24 @@ import styles from './Style';
 import { EventTypes } from '../enums/EventTypes';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
-
-export const MedicineType = (value, action, language) => {
-  return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label={LocalizedStrings[language].type} />
-      <Picker.Item value={LocalizedStrings[language].tablet} label={LocalizedStrings[language].tablet} />
-      <Picker.Item value={LocalizedStrings[language].syrup} label={LocalizedStrings[language].syrup} />
-      <Picker.Item value={LocalizedStrings[language].ampule} label={LocalizedStrings[language].ampule} />
-      <Picker.Item value={LocalizedStrings[language].suppository} label={LocalizedStrings[language].suppository} />
-      <Picker.Item value={LocalizedStrings[language].cream} label={LocalizedStrings[language].cream} />
-      <Picker.Item value={LocalizedStrings[language].drops} label={LocalizedStrings[language].drops} />
-      <Picker.Item value={LocalizedStrings[language].bottle} label={LocalizedStrings[language].bottle} />
-      <Picker.Item value={LocalizedStrings[language].spray} label={LocalizedStrings[language].spray} />
-      <Picker.Item value={LocalizedStrings[language].gel} label={LocalizedStrings[language].gel} />
-      <Picker.Item value={LocalizedStrings[language].lotion} label={LocalizedStrings[language].lotion} />
-    </Picker>
-  )
-}
+import radioButtons from './shared/RadioButtons';
 
 export const MedicineDisplay = (metadataObj, language) => {
-  return (
-    <View>
-      <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
-      <Text>{LocalizedStrings[language].medication}: {metadataObj.medication} </Text>
-      <Text>{LocalizedStrings[language].type}: {metadataObj.type}</Text>
-      <Text>{LocalizedStrings[language].dosage}: {metadataObj.dosage}</Text>
-      <Text>{LocalizedStrings[language].days}: {metadataObj.days}</Text>
-    </View>)
+  return (<View>
+    <Text>On Stain: {metadataObj.onStain} </Text>
+    <Text>Name of statin and dose: {metadataObj.stainNameDose} </Text>
+    <Text>Current diabetes medications and doses: {metadataObj.diabetes}</Text>
+    <Text>Current HTN medications and doses: {metadataObj.htn}</Text>
+    <Text>Current non-diabetes medications: {metadataObj.nonDiabetes} </Text>
+  </View>)
 }
 
 const Medicine = (props) => {
-  const [medication, setMedication] = useState(null);
-  const [type, setType] = useState(null);
-  const [dosage, setDosage] = useState(null);
-  const [days, setDays] = useState(null);
+  const [onStain, setOnStain] = useState(null);
+  const [stainNameDose, setStainNameDose] = useState(null);
+  const [diabetes, setDiabetes] = useState(null);
+  const [nonDiabetes, setNonDiabetes] = useState(null);
+  const [htn, setHtn] = useState(null);
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
 
   const patientId = props.navigation.getParam('patientId');
@@ -62,10 +41,11 @@ const Medicine = (props) => {
       event_type: EventTypes.Medicine,
       event_metadata: JSON.stringify({
         doctor: userName,
-        medication,
-        type,
-        dosage,
-        days,
+        onStain,
+        stainNameDose,
+        diabetes,
+        htn,
+        nonDiabetes
       })
     }).then(() => {
       props.navigation.navigate('NewVisit')
@@ -78,48 +58,51 @@ const Medicine = (props) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
-
-
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].medicine}</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Medication/Pharmacy:</Text>
+        </View>
+        <View style={styles.responseRow}>
+						{radioButtons({ field: onStain, action: setOnStain, prompt: 'On Stain', language })}
+					</View>
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>Stain Name and Dose:</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            style={styles.inputs}
+            onChangeText={(text) => setStainNameDose(text)}
+            value={stainNameDose}
+          />
         </View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].medication}</Text>
+          <Text style={{ color: '#FFFFFF' }}>Current diabetes medications and doses:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setMedication(text)}
-            value={medication}
+            onChangeText={(text) => setDiabetes(text)}
+            value={diabetes}
           />
         </View>
-        {MedicineType(type, setType, language)}
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].dosage}</Text>
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>Current HTN medications and doses:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setDosage(text)}
-            value={dosage}
+            onChangeText={(text) => setHtn(text)}
+            value={htn}
           />
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].days}</Text>
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>Current non-diabetes medications:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setDays(text)}
-            value={days}
-            keyboardType='numeric'
+            onChangeText={(text) => setNonDiabetes(text)}
+            value={nonDiabetes}
           />
-        </View>
-        <View style={{ alignItems: 'center' }}>
-          <Button
-            title={LocalizedStrings[language].save}
-            color={'#F77824'}
-            onPress={() => submit()} />
         </View>
       </View>
     </ScrollView>

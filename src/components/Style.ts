@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "#3A539B",
+    backgroundColor: "#00b095",
   },
   loginInputsContainer: {
     padding: 10,
@@ -54,14 +54,14 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
-    backgroundColor: "#3A539B",
+    backgroundColor: "#00b095",
   },
   containerLeft: {
     paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : 0,
     paddingBottom: 20,
     justifyContent: 'flex-start',
     flex: 1,
-    backgroundColor: "#3A539B",
+    backgroundColor: "#00b095",
   },
   inputsContainer: {
     flex: 1,
@@ -103,7 +103,7 @@ export default StyleSheet.create({
     color: '#FFFFFF'
   },
   main: {
-    backgroundColor: "#3A539B",
+    backgroundColor: "#00b095",
     paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : 0,
     flex: 1,
   },
@@ -166,7 +166,7 @@ export default StyleSheet.create({
     borderColor: '#EAEAEA',
     borderWidth: .5,
     borderRadius: 12,
-    backgroundColor: '#6177B7'
+    backgroundColor: '#00d2a7'
   },
   actionButton: {
     flexDirection: 'column',
@@ -202,8 +202,8 @@ export default StyleSheet.create({
     margin: 10,
     paddingHorizontal: 20,
     height: 40,
-    color: '#31BBF3',
-    borderColor: '#31BBF3',
+    color: '#08F46C',
+    borderColor: '#08F46C',
     borderWidth: 2,
     borderRadius: 30,
     backgroundColor: '#FFFFFF',

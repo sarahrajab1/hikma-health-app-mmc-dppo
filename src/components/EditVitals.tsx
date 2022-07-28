@@ -12,26 +12,32 @@ const EditVitals = (props) => {
   const event = props.navigation.getParam('event');
   const metadata = props.navigation.getParam('event').event_metadata;
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
-  const [heartRate, setHeartRate] = useState(null);
+  const [height, setHeight] = useState(null);
+  const [weight, setWeight] = useState(null);
+  const [bmi, setBmi] = useState(null);
+  const [waistCircumference, setWaistCircumference] = useState(null);
   const [systolic, setSystolic] = useState(null);
   const [diastolic, setDiastolic] = useState(null);
-  const [sats, setSats] = useState(null);
-  const [temp, setTemp] = useState(null);
-  const [respiratoryRate, setRespiratoryRate] = useState(null);
-  const [weight, setWeight] = useState(null);
-  const [bloodGlucose, setBloodGlucose] = useState(null);
+  const [pulse, setPulse] = useState(null);
 
   useEffect(() => {
     if (!!metadata) {
       const metadataObj = JSON.parse(metadata)
-      setHeartRate(metadataObj.heartRate)
+      setHeight(metadataObj.height)
+      setWeight(metadataObj.weight)
+      setBmi(metadataObj.bmi)
+      setWaistCircumference(metadataObj.waistCircumference)
       setSystolic(metadataObj.systolic)
       setDiastolic(metadataObj.diastolic)
-      setSats(metadataObj.sats)
-      setTemp(metadataObj.temp)
-      setRespiratoryRate(metadataObj.respiratoryRate)
-      setWeight(metadataObj.weight)
-      setBloodGlucose(metadataObj.bloodGlucose)
+      setPulse(metadataObj.pulse)
+//       setHeartRate(metadataObj.heartRate)
+//       setSystolic(metadataObj.systolic)
+//       setDiastolic(metadataObj.diastolic)
+//       setSats(metadataObj.sats)
+//       setTemp(metadataObj.temp)
+//       setRespiratoryRate(metadataObj.respiratoryRate)
+//       setWeight(metadataObj.weight)
+//       setBloodGlucose(metadataObj.bloodGlucose)
     }
   }, [props])
 
@@ -39,14 +45,13 @@ const EditVitals = (props) => {
     database.editEvent(
       event.id,
       JSON.stringify({
-        heartRate,
+        height,
+        weight,
+        bmi,
+        waistCircumference,
         systolic,
         diastolic,
-        sats,
-        temp,
-        respiratoryRate,
-        weight,
-        bloodGlucose
+        pulse
       })
     ).then((response) => props.navigation.navigate('EventList', { events: response, language }))
   };
@@ -55,16 +60,39 @@ const EditVitals = (props) => {
     <View style={styles.container}>
       {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
       <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].vitals}</Text>
-
       <View style={[styles.inputRow, { marginTop: 30 }]}>
         <TextInput
           style={styles.inputs}
-          placeholder="HR"
-          onChangeText={(text) => setHeartRate(text)}
-          value={heartRate}
+          placeholder="Height"
+          onChangeText={(text) => setHeight(text)}
+          value={height}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>BPM</Text>
+        <Text style={{ color: '#FFFFFF' }}>/</Text>
+        <TextInput
+          style={styles.inputs}
+          placeholder="Weight"
+          onChangeText={(text) => setWeight(text)}
+          value={weight}
+          keyboardType='numeric'
+        />
+      </View>
+      <View style={[styles.inputRow]}>
+        <TextInput
+          style={styles.inputs}
+          placeholder="bmi"
+          onChangeText={(text) => setBmi(text)}
+          value={bmi}
+          keyboardType='numeric'
+          />
+        <Text style={{ color: '#FFFFFF' }}>/</Text>
+        <TextInput
+          style={styles.inputs}
+          placeholder="Waist Circumference"
+          onChangeText={(text) => setWaistCircumference(text)}
+          value={waistCircumference}
+          keyboardType='numeric'
+        />
       </View>
       <View style={styles.inputRow}>
         <TextInput
@@ -86,46 +114,12 @@ const EditVitals = (props) => {
       <View style={styles.inputRow}>
         <TextInput
           style={styles.inputs}
-          placeholder="Sats"
-          onChangeText={(text) => setSats(text)}
-          value={sats}
+          placeholder="pulse"
+          onChangeText={(text) => Pulse(text)}
+          value={pulse}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>%</Text>
-      </View>
-      <View style={styles.inputRow}>
-        <TextInput
-          style={styles.inputs}
-          placeholder="Temp"
-          onChangeText={(text) => setTemp(text)}
-          value={temp}
-          keyboardType='numeric'
-        />
-        <Text style={{ color: '#FFFFFF' }}>°C</Text>
-        <TextInput
-          style={styles.inputs}
-          placeholder="RR"
-          onChangeText={(text) => setRespiratoryRate(text)}
-          value={respiratoryRate}
-          keyboardType='numeric'
-        />
-      </View>
-      <View style={styles.inputRow}>
-        <TextInput
-          style={styles.inputs}
-          placeholder="Weight"
-          onChangeText={(text) => setWeight(text)}
-          value={weight}
-          keyboardType='numeric'
-        />
-        <Text style={{ color: '#FFFFFF' }}>kg</Text>
-        <TextInput
-          style={styles.inputs}
-          placeholder="BG"
-          onChangeText={(text) => setBloodGlucose(text)}
-          value={bloodGlucose}
-          keyboardType='numeric'
-        />
+        <Text style={{ color: '#FFFFFF' }}>/</Text>
       </View>
       <View style={{ marginTop: 30 }}>
         <Button

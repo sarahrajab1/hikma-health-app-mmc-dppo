@@ -173,6 +173,62 @@ const NewVisit = (props) => {
           <Text style={styles.actionText}>{LocalizedStrings[language].covidScreening}</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.DmHistory)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/medicalHistory.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>DM History</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.ClinicalExamination)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/stethoscope.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Clinical Examination</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.EndocrinologistCases)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/notes.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Endocrinologist Cases</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.Referrals)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/doctor.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Referrals</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.OphthalmologyExamination)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/stethoscope.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Ophthalmology Examination</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.FootCareExamination)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/stethoscope.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Foot Care Examination</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => openTextEvent(EventTypes.LabInvestigation)}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/medicalHistory.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>Lab Data and Investigations:</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
