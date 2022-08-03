@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, ScrollView, Button, TouchableOpacity
+  View, Text, TextInput, ScrollView, Button, TouchableOpacity, Picker
 } from 'react-native';
 
 import { database } from "../storage/Database";
@@ -10,7 +10,7 @@ import { EventTypes } from '../enums/EventTypes';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
 import radioButtons from './shared/RadioButtons';
-
+import DatePicker from 'react-native-datepicker';
 
 export const DiabetesType = (value, action, language) => {
   return (
@@ -19,7 +19,7 @@ export const DiabetesType = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Type of diabetes" />
+      <Picker.Item value='' label="None" />
       <Picker.Item value='T1D' label='T1D' />
       <Picker.Item value='T2D' label='T2D' />
       <Picker.Item value='GDM' label='GDM' />
@@ -35,7 +35,7 @@ export const Management = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Management" />
+      <Picker.Item value='' label="None" />
       <Picker.Item value='Diet Control' label='Diet Control' />
       <Picker.Item value='Insulin' label='Insulin' />
       <Picker.Item value='Tablet' label='Tablet' />
@@ -51,7 +51,6 @@ export const FamilyHistory = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Family History" />
       <Picker.Item value='no' label='No' />
       <Picker.Item value='Mother' label='mother' />
       <Picker.Item value='Father' label='Father' />
@@ -67,10 +66,9 @@ export const Smoker = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Smoker" />
+      <Picker.Item value='never' label="Never" />
       <Picker.Item value='current' label='Current' />
       <Picker.Item value='stopped' label='Stopped' />
-      <Picker.Item value='never' label='Never' />
     </Picker>
   )
 }
@@ -82,10 +80,9 @@ export const Alcohol = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Alcohol" />
+      <Picker.Item value='never' label='Never' />
       <Picker.Item value='current' label='Current' />
       <Picker.Item value='stopped' label='Stopped' />
-      <Picker.Item value='never' label='Never' />
     </Picker>
   )
 }
@@ -97,7 +94,7 @@ export const CardiacProblems = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Cardiac Problems" />
+      <Picker.Item value='' label="None" />
       <Picker.Item value='Ischemic heart disease' label='Ischemic heart disease' />
       <Picker.Item value='Congestive heart failure' label='Congestive heart failure' />
       <Picker.Item value='others' label='Others' />
@@ -112,7 +109,6 @@ export const HfSign = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="HfSign" />
       <Picker.Item value='Absent' label='Absent' />
       <Picker.Item value='Present' label='Present' />
     </Picker>
@@ -126,7 +122,6 @@ export const Hypertension = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Hypertension" />
       <Picker.Item value='Absent' label='Absent' />
       <Picker.Item value='Present' label='Present' />
     </Picker>
@@ -140,7 +135,6 @@ export const RenalProblem = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Renal Problem" />
       <Picker.Item value='No' label='No' />
       <Picker.Item value='Proteinuria  Raised serum creatinine Dialysis' label='Proteinuria  Raised serum creatinine Dialysis' />
       <Picker.Item value='History of transplantation' label='History of transplantation' />
@@ -220,31 +214,31 @@ const DmHistory = (props) => {
   const visitId = props.navigation.getParam('visitId');
   const userName = props.navigation.getParam('userName');
 
-  useEffect(() => {
-    database.getLatestPatientEventByType(patientId, EventTypes.DmHistory).then((response: any) => {
-      if (response.length > 0) {
-        const responseObj = JSON.parse(response)
-        setDiagnosisAge(responseObj.diagnosisAge)
-        setDmDuration(responseObj.dmDuration)
-        setManagement(responseObj.management)
-        setFamilyHistory(responseObj.familyHistory)
-        setSmoker(responseObj.smoker)
-        setAlcohol(responseObj.alcohol)
-        setCardiacProblem(responseObj.cardiacProblem)
-        setHfSign(responseObj.hfSign)
-        setHypertension(responseObj.hypertension)
-        setRenalProblem(responseObj.renalProblem)
-        setEyeProblem(responseObj.eyeProblem)
-        setHypoglycemiaRequiring(responseObj.hypoglycemiaRequiring)
-        setDka(responseObj.dka)
-        setMyocardial(responseObj.myocardial)
-        setCerebralStroke(responseObj.cerebralStroke)
-        setLimbAmputation(responseObj.limbAmputation)
-        setRetinalExamination(responseObj.retinalExamination)
-        setRetinalExaminationDate(responseObj.retinalExaminationDate)
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   database.getLatestPatientEventByType(patientId, EventTypes.DmHistory).then((response: any) => {
+  //     if (response.length > 0) {
+  //       const responseObj = JSON.parse(response)
+  //       setDiagnosisAge(responseObj.diagnosisAge)
+  //       setDmDuration(responseObj.dmDuration)
+  //       setManagement(responseObj.management)
+  //       setFamilyHistory(responseObj.familyHistory)
+  //       setSmoker(responseObj.smoker)
+  //       setAlcohol(responseObj.alcohol)
+  //       setCardiacProblem(responseObj.cardiacProblem)
+  //       setHfSign(responseObj.hfSign)
+  //       setHypertension(responseObj.hypertension)
+  //       setRenalProblem(responseObj.renalProblem)
+  //       setEyeProblem(responseObj.eyeProblem)
+  //       setHypoglycemiaRequiring(responseObj.hypoglycemiaRequiring)
+  //       setDka(responseObj.dka)
+  //       setMyocardial(responseObj.myocardial)
+  //       setCerebralStroke(responseObj.cerebralStroke)
+  //       setLimbAmputation(responseObj.limbAmputation)
+  //       setRetinalExamination(responseObj.retinalExamination)
+  //       setRetinalExaminationDate(responseObj.retinalExaminationDate)
+  //     }
+  //   })
+  // }, [])
 
   const submit = async () => {
     database.addEvent({
@@ -285,7 +279,7 @@ const DmHistory = (props) => {
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].DmHistory}</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>DM History</Text>
         </View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>Age at diagnosis of diabetes</Text>
@@ -307,18 +301,28 @@ const DmHistory = (props) => {
             value={dmDuration}
           />
         </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Type of diabetes</Text>
         {DiabetesType(diabetesType, setDiabetesType, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Management</Text>
         {Management(management, setManagement, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Family History</Text>
         {FamilyHistory(familyHistory, setFamilyHistory, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Smoker</Text>
         {Smoker(smoker, setSmoker, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Alcohol</Text>
         {Alcohol(alcohol, setAlcohol, language)}
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>Associated illness: </Text>
         </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Cardiac Problems</Text>
         {CardiacProblems(cardiacProblem, setCardiacProblem, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>H.F Sign</Text>
         {HfSign(hfSign, setHfSign, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Hypertension</Text>
         {Hypertension(hypertension, setHypertension, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Renal Problem</Text>
         {RenalProblem(hfSign, setRenalProblem, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Eye Problem</Text>
         {EyeProblem(eyeProblem, setEyeProblem, language)}
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>Specific relevant history:</Text>
@@ -352,7 +356,7 @@ const DmHistory = (props) => {
             placeholder="Retinal Examination Date"
             format="YYYY-MM-DD"
             minDate="1900-05-01"
-            maxDate={today.toISOString().split('T')[0]}
+            maxDate={new Date().toISOString().split('T')[0]}
             confirmBtnText={LocalizedStrings[language].confirm}
             cancelBtnText={LocalizedStrings[language].cancel}
             customStyles={{

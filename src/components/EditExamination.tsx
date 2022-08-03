@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, ScrollView, Button, TouchableOpacity
+  View, Text, TextInput, ScrollView, Button, TouchableOpacity, Picker
 } from 'react-native';
 
 import { database } from "../storage/Database";
@@ -15,7 +15,7 @@ export const Icd10Diagnosis = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Diagnosis From ICD-10" />
+      <Picker.Item value='' label="None" />
       <Picker.Item value='Certain infectious and parasitic diseases' label="Certain infectious and parasitic diseases" />
       <Picker.Item value='Neoplasms' label='Neoplasms' />
       <Picker.Item value='Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism' label='Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism' />
@@ -78,8 +78,7 @@ const EditExamination = (props) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
-        {Header({action: () => props.navigation.navigate('EventList', { language}), language, setLanguage})}
-
+        {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].examination}</Text>
         </View>
@@ -93,13 +92,9 @@ const EditExamination = (props) => {
             value={examinationComplaint}
           />
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Active Conditions:</Text>
-        </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Active Conditions</Text>
         {Icd10Diagnosis(activeConditions, setActiveConditions, language)}
-        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Inactive Conditions:</Text>
-        </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Inactive Conditions</Text>
         {Icd10Diagnosis(inactiveConditions, setInactiveConditions, language)}
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>History of Present illness:</Text>

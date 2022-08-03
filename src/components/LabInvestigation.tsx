@@ -104,7 +104,7 @@ const LabInvestigation = (props) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>

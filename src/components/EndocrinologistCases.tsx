@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, ScrollView, Button, TouchableOpacity
+  View, Text, TextInput, ScrollView, Button, TouchableOpacity, Picker
 } from 'react-native';
 
 import { database } from "../storage/Database";
@@ -19,7 +19,7 @@ export const Indications = (value, action, language) => {
       onValueChange={value => action(value)}
       style={[styles.picker, { width: 180 }]}
     >
-      <Picker.Item value='' label="Indication for referral" />
+      <Picker.Item value='' label="None" />
       <Picker.Item value='Pt Request' label='Pt Request' />
       <Picker.Item value='Uncontrolled HT' label='Uncontrolled HT' />
       <Picker.Item value='Abnormal lipid profile' label='Abnormal lipid profile' />
@@ -88,9 +88,7 @@ const EndocrinologistCases = (props) => {
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Cases of refer to endocrinologist:</Text>
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Indication for referral: </Text>
-        </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Indication for referral</Text>
         {Indications(indications, setIndications, language)}
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>Endocrinologist Feedback:</Text>

@@ -195,118 +195,104 @@ const rootNavigator = createStackNavigator(
         header: null
       })
       },
-      DmHistory: {
-        screen: DmHistory,
-        navigationOptions: () => ({
-          title: `DmHistory`,
-          header: null
-        })
-      },
-      EditDmHistory: {
-        screen: EditDmHistory,
-        navigationOptions: () => ({
-          title: `EditDmHistory`,
-          header: null
-        })
-      },
-      ClinicalExamination: {
-        screen: ClinicalExamination,
-        navigationOptions: () => ({
-          title: `ClinicalExamination`,
-          header: null
-        })
-      },
-      EditClinicalExamination: {
-        screen: EditClinicalExamination,
-        navigationOptions: () => ({
-          title: `EditClinicalExamination`,
-          header: null
-        })
-      },
-      EndocrinologistCases: {
-        screen: EndocrinologistCases,
-        navigationOptions: () => ({
-          title: `EndocrinologistCases`,
-          header: null
-        })
-      },
-      EditEndocrinologistCases: {
-        screen: EditEndocrinologistCases,
-        navigationOptions: () => ({
-          title: `EditEndocrinologistCases`,
-          header: null
-        })
-      },
-      FootCareExamination: {
-        screen: FootCareExamination,
-        navigationOptions: () => ({
-          title: `FootCareExamination`,
-          header: null
-        })
-      },
-      EditFootCareExamination: {
-        screen: EditFootCareExamination,
-        navigationOptions: () => ({
-          title: `EditFootCareExamination`,
-          header: null
-        })
-      },
-      OphthalmologyExamination: {
-        screen: OphthalmologyExamination,
-        navigationOptions: () => ({
-          title: `OphthalmologyExamination`,
-          header: null
-        })
-      },
-      EditOphthalmologyExamination: {
-        screen: EditOphthalmologyExamination,
-        navigationOptions: () => ({
-          title: `EditOphthalmologyExamination`,
-          header: null
-        })
-      },
-      FootCareExamination: {
-        screen: FootCareExamination,
-        navigationOptions: () => ({
-          title: `FootCareExamination`,
-          header: null
-        })
-      },
-      EditFootCareExamination: {
-        screen: EditFootCareExamination,
-        navigationOptions: () => ({
-          title: `EditFootCareExamination`,
-          header: null
-        })
-      },
-      Referrals: {
-        screen: Referrals,
-        navigationOptions: () => ({
-          title: `Referrals`,
-          header: null
-        })
-      },
-      EditReferrals: {
-        screen: EditReferrals,
-        navigationOptions: () => ({
-          title: `EditReferrals`,
-          header: null
-        })
-      },
-      LabInvestigation: {
-        screen: LabInvestigation,
-        navigationOptions: () => ({
-          title: `LabInvestigation`,
-          header: null
-        })
-      },
-      EditLabInvestigation: {
-        screen: EditLabInvestigation,
-        navigationOptions: () => ({
-          title: `EditLabInvestigation`,
-          header: null
-        })
-      },
+    DmHistory: {
+      screen: DmHistory,
+      navigationOptions: () => ({
+        title: `DmHistory`,
+        header: null
+      })
+    },
+    EditDmHistory: {
+      screen: EditDmHistory,
+      navigationOptions: () => ({
+        title: `EditDmHistory`,
+        header: null
+      })
+    },
+    ClinicalExamination: {
+      screen: ClinicalExamination,
+      navigationOptions: () => ({
+        title: `ClinicalExamination`,
+        header: null
+      })
+    },
+    EditClinicalExamination: {
+      screen: EditClinicalExamination,
+      navigationOptions: () => ({
+        title: `EditClinicalExamination`,
+        header: null
+      })
+    },
+    EndocrinologistCases: {
+      screen: EndocrinologistCases,
+      navigationOptions: () => ({
+        title: `EndocrinologistCases`,
+        header: null
+      })
+    },
+    EditEndocrinologistCases: {
+      screen: EditEndocrinologistCases,
+      navigationOptions: () => ({
+        title: `EditEndocrinologistCases`,
+        header: null
+      })
+    },
+    FootCareExamination: {
+      screen: FootCareExamination,
+      navigationOptions: () => ({
+        title: `FootCareExamination`,
+        header: null
+      })
+    },
+    EditFootCareExamination: {
+      screen: EditFootCareExamination,
+      navigationOptions: () => ({
+        title: `EditFootCareExamination`,
+        header: null
+      })
+    },
+    OphthalmologyExamination: {
+      screen: OphthalmologyExamination,
+      navigationOptions: () => ({
+        title: `OphthalmologyExamination`,
+        header: null
+      })
+    },
+    EditOphthalmologyExamination: {
+      screen: EditOphthalmologyExamination,
+      navigationOptions: () => ({
+        title: `EditOphthalmologyExamination`,
+        header: null
+      })
+    },
+    Referrals: {
+      screen: Referrals,
+      navigationOptions: () => ({
+        title: `Referrals`,
+        header: null
+      })
+    },
+    EditReferrals: {
+      screen: EditReferrals,
+      navigationOptions: () => ({
+        title: `EditReferrals`,
+        header: null
+      })
+    },
+    LabInvestigation: {
+      screen: LabInvestigation,
+      navigationOptions: () => ({
+        title: `LabInvestigation`,
+        header: null
+      })
+    },
+    EditLabInvestigation: {
+      screen: EditLabInvestigation,
+      navigationOptions: () => ({
+        title: `EditLabInvestigation`,
+        header: null
+      })
+    },
   },
   {
     initialRouteName: 'Home'

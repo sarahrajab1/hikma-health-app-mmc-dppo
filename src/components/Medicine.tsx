@@ -104,6 +104,12 @@ const Medicine = (props) => {
             value={nonDiabetes}
           />
         </View>
+        <View style={{ alignItems: 'center' }}>
+          <Button
+            title={LocalizedStrings[language].save}
+            color={'#F77824'}
+            onPress={() => submit()} />
+        </View>
       </View>
     </ScrollView>
   );

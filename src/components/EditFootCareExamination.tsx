@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, ScrollView, Button, TouchableOpacity
+  View, Text, TextInput, ScrollView, Button, TouchableOpacity, Picker
 } from 'react-native';
 
 import { database } from "../storage/Database";
@@ -8,82 +8,19 @@ import styles from './Style';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
 
-export const Vibration  = (value, action, language) => {
+export const StatusPicker  = (value, action, language) => {
 	return (
-		<Picker
-			selectedValue={value}
-			onValueChange={value => action(value)}
-			style={[styles.picker, { width: 180 }]}
-		>
-			<Picker.Item value='' label="Vibration Sense" />
-			<Picker.Item value='intact' label='intact' />
-			<Picker.Item value='impaired' label='impaired' />
-			<Picker.Item value='absent' label='absent' />
-		</Picker>
+	  <Picker
+		selectedValue={value}
+		onValueChange={value => action(value)}
+		style={[styles.picker, { width: 180 }]}
+	  >
+		<Picker.Item value='absent' label='absent' />
+		<Picker.Item value='intact' label='intact' />
+		<Picker.Item value='impaired' label='impaired' />
+	  </Picker>
 	)
-}
-
-
-export const Monofilament  = (value, action, language) => {
-	return (
-		<Picker
-			selectedValue={value}
-			onValueChange={value => action(value)}
-			style={[styles.picker, { width: 180 }]}
-		>
-			<Picker.Item value='' label="10g Monofilament " />
-			<Picker.Item value='intact' label='intact' />
-			<Picker.Item value='impaired' label='impaired' />
-			<Picker.Item value='absent' label='absent' />
-		</Picker>
-	)
-}
-
-export const DistalPulse  = (value, action, language) => {
-	return (
-		<Picker
-			selectedValue={value}
-			onValueChange={value => action(value)}
-			style={[styles.picker, { width: 180 }]}
-		>
-			<Picker.Item value='' label="Distal foot pulse" />
-			<Picker.Item value='intact' label='intact' />
-			<Picker.Item value='impaired' label='impaired' />
-			<Picker.Item value='absent' label='absent' />
-		</Picker>
-	)
-}
-
-export const DorsalisPulse  = (value, action, language) => {
-	return (
-		<Picker
-			selectedValue={value}
-			onValueChange={value => action(value)}
-			style={[styles.picker, { width: 180 }]}
-		>
-			<Picker.Item value='' label="Dorsalis pedis  pulse" />
-			<Picker.Item value='intact' label='intact' />
-			<Picker.Item value='impaired' label='impaired' />
-			<Picker.Item value='absent' label='absent' />
-		</Picker>
-	)
-}
-
-export const PosteriorPulse  = (value, action, language) => {
-	return (
-		<Picker
-			selectedValue={value}
-			onValueChange={value => action(value)}
-			style={[styles.picker, { width: 180 }]}
-		>
-			<Picker.Item value='' label="Posterior tibial pulse" />
-			<Picker.Item value='intact' label='intact' />
-			<Picker.Item value='impaired' label='impaired' />
-			<Picker.Item value='absent' label='absent' />
-		</Picker>
-	)
-}
-
+  }
 
 const EditFootCareExamination = (props) => {
   const event = props.navigation.getParam('event');
@@ -147,19 +84,29 @@ const EditFootCareExamination = (props) => {
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
           <Text style={{ color: '#FFFFFF' }}>Rt Foot examination:</Text>
         </View>
-				{Vibration(rtVibration, setRtVibration, language)}
-				{Monofilament(rtMonofilament, setRtMonofilament, language)}
-				{DistalPulse(rtDistalPulse, setRtDistalPulse, language)}
-				{DorsalisPulse(rtDorsalisPulse, setRtDorsalisPulse, language)}
-				{PosteriorPulse(rtPosteriorPulse, setRtPosteriorPulse, language)}
-				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Left Foot examination:</Text>
+		<Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
+		{StatusPicker(rtVibration, setRtVibration, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>10g Monofilament </Text>
+		{StatusPicker(rtMonofilament, setRtMonofilament, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Distal foot pulse </Text>
+		{StatusPicker(rtDistalPulse, setRtDistalPulse, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Dorsalis pedis  pulse</Text>
+		{StatusPicker(rtDorsalisPulse, setRtDorsalisPulse, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Posterior tibial pulse</Text>
+		{StatusPicker(rtPosteriorPulse, setRtPosteriorPulse, language)}
+		<View style={[styles.responseRow, { paddingVertical: 0 }]}>
+        	<Text style={{ color: '#FFFFFF' }}>Left Foot examination:</Text>
         </View>
-				{Vibration(leftVibration, setLeftVibration, language)}
-				{Monofilament(leftMonofilament, setLeftMonofilament, language)}
-				{DistalPulse(leftDistalPulse, setLeftDistalPulse, language)}
-				{DorsalisPulse(leftDorsalisPulse, setLeftDorsalisPulse, language)}
-				{PosteriorPulse(leftPosteriorPulse, setLeftPosteriorPulse, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
+		{StatusPicker(leftVibration, setLeftVibration, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>10g Monofilament </Text>
+		{StatusPicker(leftMonofilament, setLeftMonofilament, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Distal foot pulse </Text>
+		{StatusPicker(leftDistalPulse, setLeftDistalPulse, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Dorsalis pedis  pulse</Text>
+		{StatusPicker(leftDorsalisPulse, setLeftDorsalisPulse, language)}
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Posterior tibial pulse</Text>
+		{StatusPicker(leftPosteriorPulse, setLeftPosteriorPulse, language)}
         <View style={{ alignItems: 'center' }}>
           <Button
             title={LocalizedStrings[language].save}

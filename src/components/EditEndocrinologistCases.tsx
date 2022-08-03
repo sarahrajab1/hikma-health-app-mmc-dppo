@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, ScrollView, Button, TouchableOpacity
+  View, Text, TextInput, ScrollView, Button, TouchableOpacity, Picker
 } from 'react-native';
 
 import { database } from "../storage/Database";
@@ -11,63 +11,53 @@ import Header from './shared/Header';
 
 
 export const Indications = (value, action, language) => {
-    return (
-      <Picker
-        selectedValue={value}
-        onValueChange={value => action(value)}
-        style={[styles.picker, { width: 180 }]}
-      >
-        <Picker.Item value='' label="Indication for referral" />
-        <Picker.Item value='Pt Request' label='Pt Request' />
-        <Picker.Item value='Uncontrolled HT' label='Uncontrolled HT' />
-        <Picker.Item value='Abnormal lipid profile' label='Abnormal lipid profile' />
-        <Picker.Item value='Renal impairment' label='Renal impairment' />
-        <Picker.Item value='Advanced peripheral' label='Advanced peripheral' />
-        <Picker.Item value='Erectile dysfunction' label='Erectile dysfunction' />
-        <Picker.Item value='Uncontrolled D.M' label='Uncontrolled D.M' />
-        <Picker.Item value='recurrent hypoglycemia' label='recurrent hypoglycemia' />
-      </Picker>
-    )
-  }
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value='' label="None" />
+      <Picker.Item value='Pt Request' label='Pt Request' />
+      <Picker.Item value='Uncontrolled HT' label='Uncontrolled HT' />
+      <Picker.Item value='Abnormal lipid profile' label='Abnormal lipid profile' />
+      <Picker.Item value='Renal impairment' label='Renal impairment' />
+      <Picker.Item value='Advanced peripheral' label='Advanced peripheral' />
+      <Picker.Item value='Erectile dysfunction' label='Erectile dysfunction' />
+      <Picker.Item value='Uncontrolled D.M' label='Uncontrolled D.M' />
+      <Picker.Item value='recurrent hypoglycemia' label='recurrent hypoglycemia' />
+    </Picker>
+  )
+}
+
   
-const EditExamination = (props) => {
+const EditEndocrinologistCases = (props) => {
   const event = props.navigation.getParam('event');
   const userName = props.navigation.getParam('userName');
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
-  
-  const [examination, setExamination] = useState(null);
-  const [generalObservations, setGeneralObservations] = useState(null);
-  const [diagnosis, setDiagnosis] = useState(null);
-  const [treatment, setTreatment] = useState(null);
-  const [covid19, setCovid19] = useState(null);
-  const [referral, setReferral] = useState(null);
-  const [referralText, setReferralText] = useState(null);
+
+  const [indications, setIndications] = useState(null);
+  const [feedback, setFeedback] = useState(null);
+  const [diabetesEducation, setDiabetesEducation] = useState(null);
+
 
   useEffect(() => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
-      setExamination(metadataObj.examination)
-      setGeneralObservations(metadataObj.generalObservations)
-      setDiagnosis(metadataObj.diagnosis)
-      setTreatment(metadataObj.treatment)
-      setCovid19(metadataObj.covid19)
-      setReferral(metadataObj.referral)
-      setReferralText(metadataObj.referralText)
+        setIndications(metadataObj.indications)
+        setFeedback(metadataObj.feedback)
+        setDiabetesEducation(metadataObj.diabetesEducation)
     }
   }, [props])
 
-  const submitExamination = async () => {
+  const submit = async () => {
     database.editEvent(
       event.id,
       JSON.stringify({
         doctor: userName,
-        examination,
-        generalObservations,
-        diagnosis,
-        treatment,
-        covid19,
-        referral,
-        referralText,
+        indications,
+        feedback,
+        diabetesEducation,
       })
     ).then((response) => props.navigation.navigate('EventList', { events: response, language }))
   };
@@ -75,76 +65,42 @@ const EditExamination = (props) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
-        {Header({action: () => props.navigation.navigate('EventList', { language}), language, setLanguage})}
+        {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{LocalizedStrings[language].examination}</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Cases of refer to endocrinologist:</Text>
+        </View>
+        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Indication for referral</Text>
+        {Indications(indications, setIndications, language)}
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>Endocrinologist Feedback:</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            style={styles.inputs}
+            onChangeText={(text) => setFeedback(text)}
+            value={feedback}
+          />
         </View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].examination}</Text>
+          <Text style={{ color: '#FFFFFF' }}>Diabetes education:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
-            onChangeText={(text) => setExamination(text)}
-            value={examination}
+            onChangeText={(text) => setDiabetesEducation(text)}
+            value={diabetesEducation}
           />
         </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].generalObservations}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setGeneralObservations(text)}
-            value={generalObservations}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].diagnosis}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setDiagnosis(text)}
-            value={diagnosis}
-          />
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>{LocalizedStrings[language].treatment}</Text>
-        </View>
-        <View style={[styles.responseRow, { padding: 0 }]}>
-          <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setTreatment(text)}
-            value={treatment}
-          />
-        </View>
-        <View style={styles.responseRow}>
-          {radioButtons({ field: covid19, action: setCovid19, prompt: LocalizedStrings[language].covid19, language })}
-        </View>
-        <View style={styles.responseRow}>
-          {radioButtons({ field: referral, action: setReferral, prompt: LocalizedStrings[language].referral, language })}
-        </View>
-        {!!referral ?
-          <View style={[styles.responseRow, { paddingTop: 0, paddingHorizontal: 0 }]}>
-            <TextInput
-              style={styles.inputs}
-              onChangeText={(text) => setReferralText(text)}
-              value={referralText}
-            />
-          </View> :
-          null
-        }
         <View style={{ alignItems: 'center' }}>
           <Button
             title={LocalizedStrings[language].save}
             color={'#F77824'}
-            onPress={() => submitExamination()} />
+            onPress={() => submit()} />
         </View>
       </View>
     </ScrollView>
   );
 };
 
-export default EditExamination;
+export default EditEndocrinologistCases;

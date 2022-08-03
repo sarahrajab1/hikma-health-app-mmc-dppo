@@ -114,12 +114,11 @@ const EditVitals = (props) => {
       <View style={styles.inputRow}>
         <TextInput
           style={styles.inputs}
-          placeholder="pulse"
-          onChangeText={(text) => Pulse(text)}
+          placeholder="Pulse"
+          onChangeText={(text) => setPulse(text)}
           value={pulse}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
       </View>
       <View style={{ marginTop: 30 }}>
         <Button

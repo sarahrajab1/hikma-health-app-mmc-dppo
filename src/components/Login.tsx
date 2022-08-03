@@ -12,10 +12,10 @@ import styles from './Style';
 
 const Login = (props) => {
   const databaseSync = new DatabaseSync();
-  const [email, setEmail] = useState('demo@hikmahealth.org');
-  const [password, setPassword] = useState('HikmaHealth');
+  const [email, setEmail] = useState('sarah@shyp.studio');
+  const [password, setPassword] = useState('password123');
   const [instanceList, setInstanceList] = useState([]);
-  const [selectedInstance, setSelectedInstance] = useState({ name: 'local', url: 'http://127.0.0.1:5000' });
+  const [selectedInstance, setSelectedInstance] = useState({ name: 'local', url: 'https://mmc-dppo-api.setout.academy' });
   const [showInstanceDropdown, setShowInstanceDropdown] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');

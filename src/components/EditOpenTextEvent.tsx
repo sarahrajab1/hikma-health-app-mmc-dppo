@@ -25,22 +25,7 @@ const EditOpenTextEvent = (props) => {
 
   return (
     <View style={styles.container}>
-      {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
-      <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{event.event_type}</Text>
-      <TextInput
-        style={styles.loginInputsContainer}
-        placeholder={LocalizedStrings[language].enterTextHere}
-        onChangeText={setResponseText}
-        value={responseText}
-        multiline={true}
-      />
-
-      <View style={{ alignItems: 'center' }}>
-        <Button
-          title={LocalizedStrings[language].save}
-          color={'#F77824'}
-          onPress={() => editEvent()} />
-      </View>
+      
     </View>
   );
 };
