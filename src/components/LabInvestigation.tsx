@@ -15,27 +15,27 @@ import radioButtons from './shared/RadioButtons';
 
 export const LabInvestigationDisplay = (metadataObj, language) => {
   return (<View>
-      <Text>HbA1c: {metadataObj.hbA1c} </Text>
-      <Text>Fating blood glucose: {metadataObj.fatingGlucose} </Text>
-      <Text>Random blood glucose: {metadataObj.randomGlucose}</Text>
-      <Text>Post-meal blood glucose: {metadataObj.postMealGlucose}</Text>
-      <Text>Creatinine: {metadataObj.creatinine} </Text>
-      <Text>eGFR: {metadataObj.egfr} </Text>
-      <Text>Total cholesterol: {metadataObj.totalCholesterol} </Text>
-      <Text>LDL cholesterol: {metadataObj.ldlCholesterol} </Text>
-      <Text>HDL: {metadataObj.hdl} </Text>
-      <Text>T.G.: {metadataObj.tg} </Text>
-      <Text>S. Sodium: {metadataObj.sodium} </Text>
-      <Text>S. Potassium: {metadataObj.potassium} </Text>
-      <Text>Haemoglobin: {metadataObj.haemoglobin} </Text>
-      <Text>Urinary microalbumin to creatinine ratio (Urinary ACR): {metadataObj.urinaryAcr} </Text>
-      <Text>Urine dipstick for protein: {metadataObj.dipstick} </Text>
+      <Text>HbA1c: {!!metadataObj.hbA1c ? "Normal" : "Abnormal"}</Text>
+      <Text>Fating blood glucose: {!!metadataObj.fatingGlucose ? "Normal" : "Abnormal"}</Text>
+      <Text>Random blood glucose: {!!metadataObj.randomGlucose ? "Normal" : "Abnormal"}</Text>
+      <Text>Post-meal blood glucose: {!!metadataObj.postMealGlucose ? "Normal" : "Abnormal"}</Text>
+      <Text>Creatinine: {!!metadataObj.creatinine ? "Normal" : "Abnormal"}</Text>
+      <Text>eGFR: {!!metadataObj.egfr ? "Normal" : "Abnormal"}</Text>
+      <Text>Total cholesterol: {!!metadataObj.totalCholesterol ? "Normal" : "Abnormal"}</Text>
+      <Text>LDL cholesterol: {!!metadataObj.ldlCholesterol ? "Normal" : "Abnormal"}</Text>
+      <Text>HDL: {!!metadataObj.hdl ? "Normal" : "Abnormal"}</Text>
+      <Text>T.G.: {!!metadataObj.tg ? "Normal" : "Abnormal"}</Text>
+      <Text>S. Sodium: {!!metadataObj.sodium ? "Normal" : "Abnormal"}</Text>
+      <Text>S. Potassium: {!!metadataObj.potassium ? "Normal" : "Abnormal"}</Text>
+      <Text>Haemoglobin: {!!metadataObj.haemoglobin ? "Normal" : "Abnormal"}</Text>
+      <Text>Urinary microalbumin to creatinine ratio (Urinary ACR): {!!metadataObj.urinaryAcr ? "Normal" : "Abnormal"}</Text>
+      <Text>Urine dipstick for protein: {!!metadataObj.dipstick ? "Normal" : "Abnormal"}</Text>
       <Text>Urine analysis: </Text>
-      <Text>Protein: {metadataObj.urineProtein} </Text>
-      <Text>Sugar: {metadataObj.urineSugar} </Text>
-      <Text>Ketones: {metadataObj.urineKetones} </Text>
-      <Text>Microalbuminuria: {metadataObj.urineMicroalbuminuria} </Text>
-      <Text>ECG: {metadataObj.ecg} </Text>
+      {!!metadataObj.urineProtein ? <Text>Protein:: {LocalizedStrings[language].yes}</Text> : null}
+      {!!metadataObj.urineSugar ? <Text>Sugar: {LocalizedStrings[language].yes}</Text> : null}
+      {!!metadataObj.urineKetones ? <Text>Ketones: {LocalizedStrings[language].yes}</Text> : null}
+      {!!metadataObj.urineMicroalbuminuria ? <Text>Microalbuminuria: {LocalizedStrings[language].yes}</Text> : null}
+      {!!metadataObj.ecg ? <Text>ECG: {LocalizedStrings[language].yes}</Text> : null}
       <Text>Other investigations: {metadataObj.otherInvestigations} </Text>
     </View>)
 }
@@ -73,7 +73,7 @@ const LabInvestigation = (props) => {
       id: uuid(),
       patient_id: patientId,
       visit_id: visitId,
-      event_type: EventTypes.ExaminationFull,
+      event_type: EventTypes.LabInvestigation,
       event_metadata: JSON.stringify({
         doctor: userName,
         hbA1c,

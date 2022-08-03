@@ -175,14 +175,14 @@ export const DmHistoryDisplay = (metadataObj, language) => {
       <Text>Hypertension: {metadataObj.hypertension}</Text>
       <Text>Renal Problem: {metadataObj.renalProblem}</Text>
       <Text>Eye problem: {metadataObj.eyeProblem}</Text>
-      <Text>Hypoglycemia requiring assistance:: {metadataObj.hypoglycemiaRequiring}</Text>
-      <Text>D.K.A:  {metadataObj.dka}</Text>
-      <Text>Myocardial infarction: {metadataObj.myocardial}</Text>
-      <Text>Cerebral Stroke: {metadataObj.cerebralStroke}</Text>
-      <Text>Lower limb Amputation:  {metadataObj.limbAmputation}</Text>
-      <Text>Erectile Dysfunction: {metadataObj.erectileDysfunction}</Text>
-      <Text>Retinal examination:  {metadataObj.retinalExamination}</Text>
-      <Text>Retinal examination Date:  {metadataObj.retinalExaminationDate}</Text>
+      <Text>Hypoglycemia requiring assistance: {!!metadataObj.hypoglycemiaRequiring ? "YES" : "NO"}</Text>
+      <Text>D.K.A: {!!metadataObj.dka ? "YES" : "NO"}</Text>
+      <Text>Myocardial infarction: {!!metadataObj.myocardial ? "YES" : "NO"}</Text>
+      <Text>Cerebral Stroke: {!!metadataObj.cerebralStroke ? "YES" : "NO"}</Text>
+      <Text>Lower limb Amputation: {!!metadataObj.limbAmputation ? "YES" : "NO"}</Text>
+      <Text>Erectile Dysfunction: {!!metadataObj.erectileDysfunction ? "YES" : "NO"}</Text>
+      <Text>Retinal examination: {!!metadataObj.retinalExamination ? "YES" : "NO"}</Text>
+      <Text>Retinal examination date: {metadataObj.retinalExaminationDate} </Text>
     </View>)
 }
 

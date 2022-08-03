@@ -13,7 +13,7 @@ import radioButtons from './shared/RadioButtons';
 
 export const MedicineDisplay = (metadataObj, language) => {
   return (<View>
-    <Text>On Stain: {metadataObj.onStain} </Text>
+    <Text>On Stain: {!!metadataObj.onStain ? "YES" : "NO"}</Text>
     <Text>Name of statin and dose: {metadataObj.stainNameDose} </Text>
     <Text>Current diabetes medications and doses: {metadataObj.diabetes}</Text>
     <Text>Current HTN medications and doses: {metadataObj.htn}</Text>

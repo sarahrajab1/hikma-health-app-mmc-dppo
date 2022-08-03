@@ -15,12 +15,12 @@ import radioButtons from './shared/RadioButtons';
 
 export const ReferralsDisplay = (metadataObj, language) => {
   return (<View>
-    <Text>Diabetic Educator:  {metadataObj.diabetesEducation}</Text>
-    <Text>Dietitian: {metadataObj.dietitian} </Text>
-    <Text>Ophthalmologist: {metadataObj.ophthalmologist} </Text>
-    <Text>Foot care clinic: {metadataObj.footCareClinic}</Text>
-    <Text>Social Services: {metadataObj.socialServices}</Text>
-    <Text>Psychologist: {metadataObj.psychologist} </Text>
+    <Text>Diabetic Educator: {!!metadataObj.diabetesEducation ? "Normal" : "Abnormal"}</Text>
+    <Text>Dietitian: {!!metadataObj.dietitian ? "Normal" : "Abnormal"}</Text>
+    <Text>Ophthalmologist: {!!metadataObj.ophthalmologist ? "Normal" : "Abnormal"}</Text>
+    <Text>Foot care clinic: {!!metadataObj.footCareClinic ? "Normal" : "Abnormal"}</Text>
+    <Text>Social Services: {!!metadataObj.socialServices ? "Normal" : "Abnormal"}</Text>
+    <Text>Psychologist: {!!metadataObj.psychologist ? "Normal" : "Abnormal"}</Text>
   </View>)
 }
 
@@ -42,7 +42,7 @@ const Referrals = (props) => {
       id: uuid(),
       patient_id: patientId,
       visit_id: visitId,
-      event_type: EventTypes.ExaminationFull,
+      event_type: EventTypes.Referrals,
       event_metadata: JSON.stringify({
         doctor: userName,
         diabeticEducator,

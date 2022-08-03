@@ -16,15 +16,15 @@ export const  OphthalmologyExaminationDisplay = (metadataObj, language) => {
   return (
     <View>
 	    <Text>Rt Retinal examination:</Text>
-      <Text>Dilated fundoscopy: {metadataObj.rtDilatedFundoscopy} </Text>
-      <Text>Retinal camera: {metadataObj.rtRetinalCamera} </Text>
-      <Text>Ophthalmologist assessment: {metadataObj.rtOphthalmologist}</Text>
-      <Text>Findings: {metadataObj.rtFindings}</Text>
+	    <Text>Dilated fundoscopy: {!!metadataObj.rtDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
+      <Text>Retinal camera: {!!metadataObj.rtRetinalCamera ? "Normal" : "Abnormal"}</Text>
+      <Text>Ophthalmologist assessment: {!!metadataObj.rtOphthalmologist ? "Normal" : "Abnormal"}</Text>
+      <Text>Findings: {!!metadataObj.rtFindings ? "Normal" : "Abnormal"}</Text>
       <Text>Left Retinal examination:</Text>
-			<Text>Dilated fundoscopy: {metadataObj.leftDilatedFundoscopy} </Text>
-      <Text>Retinal camera: {metadataObj.leftRetinalCamera} </Text>
-      <Text>Ophthalmologist assessment: {metadataObj.leftOphthalmologist}</Text>
-      <Text>Findings: {metadataObj.leftFindings}</Text>
+			<Text>Dilated fundoscopy: {!!metadataObj.leftDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
+      <Text>Retinal camera: {!!metadataObj.leftRetinalCamera ? "Normal" : "Abnormal"}</Text>
+      <Text>Ophthalmologist assessment: {!!metadataObj.leftOphthalmologist ? "Normal" : "Abnormal"}</Text>
+      <Text>Findings: {!!metadataObj.leftFindings ? "Normal" : "Abnormal"}</Text>
     </View>)
 }
 
@@ -48,7 +48,7 @@ const OphthalmologyExamination = (props) => {
       id: uuid(),
       patient_id: patientId,
       visit_id: visitId,
-      event_type: EventTypes.ExaminationFull,
+      event_type: EventTypes.OphthalmologyExamination,
       event_metadata: JSON.stringify({
         doctor: userName,
         rtDilatedFundoscopy,

@@ -66,7 +66,7 @@ const FootCareExamination = (props) => {
       id: uuid(),
       patient_id: patientId,
       visit_id: visitId,
-      event_type: EventTypes.ExaminationFull,
+      event_type: EventTypes.FootCareExamination,
       event_metadata: JSON.stringify({
         doctor: userName,
         rtVibration,

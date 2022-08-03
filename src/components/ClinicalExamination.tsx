@@ -16,15 +16,15 @@ export const ClinicalExaminationDisplay = (metadataObj, language) => {
   return (
     <View>
       <Text>{LocalizedStrings[language].provider}: {metadataObj.doctor} </Text>
-      <Text>Respiratory System: {metadataObj.respiratorySystem} </Text>
+      <Text>Respiratory System: {!!metadataObj.respiratorySystem ? "Normal" : "Abnormal"}</Text>
       <Text>Note: {metadataObj.respiratorySystemNote}</Text>
-      <Text>CVS: {metadataObj.cvs}</Text>
+      <Text>CVS: {!!metadataObj.cvs ? "Normal" : "Abnormal"}</Text>
       <Text>Note: {metadataObj.csvNote}</Text>
-      <Text>Abdomen: {metadataObj.abdomen}</Text>
+      <Text>Abdomen: {!!metadataObj.abdomen ? "Normal" : "Abnormal"}</Text>
       <Text>Note: {metadataObj.abdomenNote}</Text>
-      <Text>Musculoskeletal: {metadataObj.musculoskeletal}</Text>
+      <Text>Musculoskeletal: {!!metadataObj.musculoskeletal ? "Normal" : "Abnormal"}</Text>
       <Text>Note: {metadataObj.musculoskeletalNote}</Text>
-      <Text>CNS: {metadataObj.cns}</Text>
+      <Text>CNS: {!!metadataObj.cns ? "Normal" : "Abnormal"}</Text>
       <Text>Note: {metadataObj.cnsNote}</Text>
     </View>)
 }
