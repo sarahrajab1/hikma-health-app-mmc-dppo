@@ -51,7 +51,7 @@ const ClinicalExamination = (props) => {
       id: uuid(),
       patient_id: patientId,
       visit_id: visitId,
-      event_type: EventTypes.ExaminationFull,
+      event_type: EventTypes.ClinicalExamination,
       event_metadata: JSON.stringify({
         doctor: userName,
         respiratorySystem,
@@ -82,6 +82,7 @@ const ClinicalExamination = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
+            placeholder="Note"
             style={styles.inputs}
             onChangeText={(text) => setRespiratorySystemNote(text)}
             value={respiratorySystemNote}
@@ -93,6 +94,7 @@ const ClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setCvsNote(text)}
             value={cvsNote}
           />
@@ -103,6 +105,7 @@ const ClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setAbdomenNote(text)}
             value={abdomenNote}
           />
@@ -113,6 +116,7 @@ const ClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setMusculoskeletalNote(text)}
             value={musculoskeletalNote}
           />
@@ -123,6 +127,7 @@ const ClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setCnsNote(text)}
             value={cnsNote}
           />

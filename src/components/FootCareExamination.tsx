@@ -94,7 +94,7 @@ const FootCareExamination = (props) => {
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Foot Care Unit Examination (Sensation): </Text>
         </View>
 				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Rt Foot examination:</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Rt Foot examination:</Text>
         </View>
         <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
 				{StatusPicker(rtVibration, setRtVibration, language)}
@@ -107,7 +107,7 @@ const FootCareExamination = (props) => {
         <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Posterior tibial pulse</Text>
 				{StatusPicker(rtPosteriorPulse, setRtPosteriorPulse, language)}
 				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Left Foot examination:</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Left Foot examination:</Text>
         </View>
         <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
 				{StatusPicker(leftVibration, setLeftVibration, language)}

@@ -68,7 +68,6 @@ const EditVitals = (props) => {
           value={height}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Weight"
@@ -85,7 +84,6 @@ const EditVitals = (props) => {
           value={bmi}
           keyboardType='numeric'
           />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Waist Circumference"

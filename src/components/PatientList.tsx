@@ -164,7 +164,7 @@ const PatientList = (props) => {
           </TouchableOpacity>
         </View>
 
-        <View style={[styles.searchBar, { backgroundColor: '#6177B7', borderRadius: 30 }]}>
+        <View style={[styles.searchBar, { backgroundColor: '#00d2a7', borderRadius: 30 }]}>
           <TextInput
             style={[styles.searchInput, { marginLeft: 10 }]}
             placeholderTextColor='#FFFFFF'

@@ -75,6 +75,7 @@ const EditClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setRespiratorySystemNote(text)}
             value={respiratorySystemNote}
           />
@@ -85,6 +86,7 @@ const EditClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setCvsNote(text)}
             value={cvsNote}
           />
@@ -95,6 +97,7 @@ const EditClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setAbdomenNote(text)}
             value={abdomenNote}
           />
@@ -105,6 +108,7 @@ const EditClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setMusculoskeletalNote(text)}
             value={musculoskeletalNote}
           />
@@ -115,6 +119,7 @@ const EditClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             style={styles.inputs}
+            placeholder="Note"
             onChangeText={(text) => setCnsNote(text)}
             value={cnsNote}
           />

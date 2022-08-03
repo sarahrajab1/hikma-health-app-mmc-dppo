@@ -12,7 +12,7 @@ import Header from './shared/Header';
 import examinationRadioButtons from './shared/ExaminationRadioButtons';
 
 
-export const OphthalmologyExaminationDisplay = (metadataObj, language) => {
+export const  OphthalmologyExaminationDisplay = (metadataObj, language) => {
   return (
     <View>
 	    <Text>Rt Retinal examination:</Text>

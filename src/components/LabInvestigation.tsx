@@ -108,10 +108,7 @@ const LabInvestigation = (props) => {
       <View style={styles.containerLeft}>
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>LabInvestigation: </Text>
-        </View>
-				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Rt Retinal examination:</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Lab data and Investigations: </Text>
         </View>
 				<View style={[styles.responseRow, { paddingBottom: 0 }]}>
           {examinationRadioButtons({ field: hbA1c, action: setHbA1c, prompt: 'HbA1c:', language })}
@@ -160,7 +157,7 @@ const LabInvestigation = (props) => {
         </View>
 				<View>
 					<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-						<Text style={{ color: '#FFFFFF' }}>Urine analysis:</Text>
+						<Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Urine analysis:</Text>
 					</View>
 					<View style={styles.responseRow}>
 						{radioButtons({ field: urineProtein, action: setUrineProtein, prompt: 'Protein', language })}

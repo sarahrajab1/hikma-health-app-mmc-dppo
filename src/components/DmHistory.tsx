@@ -183,7 +183,6 @@ export const DmHistoryDisplay = (metadataObj, language) => {
       <Text>Erectile Dysfunction: {metadataObj.erectileDysfunction}</Text>
       <Text>Retinal examination:  {metadataObj.retinalExamination}</Text>
       <Text>Retinal examination Date:  {metadataObj.retinalExaminationDate}</Text>
-
     </View>)
 }
 
@@ -379,5 +378,6 @@ const DmHistory = (props) => {
     </ScrollView>
   );
 };
+
 
 export default DmHistory;

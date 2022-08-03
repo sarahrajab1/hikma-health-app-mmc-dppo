@@ -10,7 +10,7 @@ import { EventTypes } from '../enums/EventTypes';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
 
-export const VitalsDisplay = (metadataObj) => {
+export const VitalsDisplay = (metadataObj, language) => {
   return (
     <View style={{
       flexDirection: 'row',
@@ -22,13 +22,6 @@ export const VitalsDisplay = (metadataObj) => {
         <Text style={{ width: '50%' }}>Waist circumference: {metadataObj.waistCircumference} </Text>
         <Text style={{ width: '50%' }}>BP: {metadataObj.systolic}/{metadataObj.diastolic} </Text>
         <Text style={{ width: '50%' }}>Pulse: {metadataObj.pulse} </Text>
-//       <Text style={{ width: '50%' }}>HR: {metadataObj.heartRate} BPM</Text>
-//       <Text style={{ width: '50%' }}>BP: {metadataObj.systolic}/{metadataObj.diastolic}</Text>
-//       <Text style={{ width: '50%' }}>Sats: {metadataObj.sats}%</Text>
-//       <Text style={{ width: '50%' }}>Temp: {metadataObj.temp} °C</Text>
-//       <Text style={{ width: '50%' }}>RR: {metadataObj.respiratoryRate}</Text>
-//       <Text style={{ width: '50%' }}>Weight: {metadataObj.weight} kg</Text>
-//       <Text style={{ width: '50%' }}>BG: {metadataObj.bloodGlucose}</Text>
     </View>)
 }
 
@@ -93,7 +86,6 @@ const Vitals = (props) => {
           value={height}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Weight"
@@ -110,7 +102,6 @@ const Vitals = (props) => {
           value={bmi}
           keyboardType='numeric'
           />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Waist Circumference"
@@ -144,7 +135,6 @@ const Vitals = (props) => {
           value={pulse}
           keyboardType='numeric'
         />
-        <Text style={{ color: '#FFFFFF' }}>/</Text>
       </View>
       <View style={{ marginTop: 30 }}>
         <Button

@@ -7,6 +7,16 @@ import { EventTypes } from "../enums/EventTypes";
 import { MedicineDisplay } from "./Medicine";
 import { MedicalHistoryDisplay } from "./MedicalHistory";
 import { ExaminationDisplay } from "./Examination";
+import { DmHistoryDisplay } from "./DmHistory"
+import { VitalsDisplay } from "./Vitals"
+import { ClinicalExaminationDisplay } from "./ClinicalExamination"
+import { EndocrinologistCasesDisplay } from "./EndocrinologistCases"
+import { ReferralsDisplay } from "./Referrals"
+import { OphthalmologyExaminationDisplay } from "./OphthalmologyExamination"
+import { FootCareExaminationDisplay } from "./FootCareExamination"
+import { LabInvestigationDisplay } from "./LabInvestigation"
+
+
 import Header from "./shared/Header";
 
 const SnapshotList = (props) => {
@@ -61,6 +71,38 @@ const SnapshotList = (props) => {
       default:
         eventTypeText = item.event_type
         display = <Text>{metadataObj}</Text>
+        break
+      case EventTypes.DmHistory:
+        eventTypeText = "DM History"
+        display = DmHistoryDisplay(metadataObj, language)
+        break
+      case EventTypes.Vitals:
+        eventTypeText = "Vitals"
+        display = VitalsDisplay(metadataObj, language)
+        break
+      case EventTypes.ClinicalExamination:
+        eventTypeText = "ClinicalExamination"
+        display = ClinicalExaminationDisplay(metadataObj, language)
+        break
+      case EventTypes.EndocrinologistCases:
+        eventTypeText = "EndocrinologistCases"
+        display = EndocrinologistCasesDisplay(metadataObj, language)
+        break
+      case EventTypes.Referrals:
+        eventTypeText = "Referrals"
+        display = ReferralsDisplay(metadataObj, language)
+        break
+      case EventTypes.OphthalmologyExamination:
+        eventTypeText = "OphthalmologyExamination"
+        display = OphthalmologyExaminationDisplay(metadataObj, language)
+        break
+      case EventTypes.FootCareExamination:
+        eventTypeText = "FootCareExamination"
+        display = FootCareExaminationDisplay(metadataObj, language)
+        break
+      case EventTypes.LabInvestigation:
+        eventTypeText = "LabInvestigation"
+        display = LabInvestigationDisplay(metadataObj, language)
         break
     }
 
