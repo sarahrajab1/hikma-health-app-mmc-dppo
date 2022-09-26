@@ -13,7 +13,7 @@ export const Icd1 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Certain infectious or parasitic diseases" />
       <Picker.Item value='Gastroenteritis or colitis of infectious origin' label="Gastroenteritis or colitis of infectious origin" />
@@ -51,7 +51,7 @@ export const Icd2 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Neoplasms" />
       <Picker.Item value='Neoplasms of brain or central nervous system' label="Neoplasms of brain or central nervous system" />
@@ -71,7 +71,7 @@ export const Icd3 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the blood or blood-forming organs" />
       <Picker.Item value='Anaemias or other erythrocyte disorders' label="Anaemias or other erythrocyte disorders" />
@@ -91,7 +91,7 @@ export const Icd4 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the immune system" />
       <Picker.Item value='Primary immunodeficiencies' label="Primary immunodeficiencies" />
@@ -115,7 +115,7 @@ export const Icd5 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Endocrine, nutritional or metabolic diseases" />
       <Picker.Item value='Endocrine diseases' label="Endocrine diseases" />
@@ -132,7 +132,7 @@ export const Icd6 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Mental, behavioural or neurodevelopmental disorders" />
       <Picker.Item value='Neurodevelopmental disorders' label="Neurodevelopmental disorders" />
@@ -170,7 +170,7 @@ export const Icd7 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Sleep-wake disorders" />
       <Picker.Item value='Insomnia disorders' label="Insomnia disorders" />
@@ -190,7 +190,7 @@ export const Icd8 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the nervous system" />
       <Picker.Item value='Movement disorders' label="Movement disorders" />
@@ -231,7 +231,7 @@ export const Icd9 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the visual system" />
       <Picker.Item value='Disorders of the ocular adnexa or orbit' label="Disorders of the ocular adnexa or orbit" />
@@ -266,7 +266,7 @@ export const Icd10 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the ear or mastoid process" />
       <Picker.Item value='Diseases of external ear' label="Diseases of external ear" />
@@ -288,7 +288,7 @@ export const Icd11 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the circulatory system " />
       <Picker.Item value='Hypertensive diseases' label='Hypertensive diseases' />
@@ -325,7 +325,7 @@ export const Icd12 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the respiratory system " />
       <Picker.Item value='Upper respiratory tract disorders' label='Upper respiratory tract disorders' />
@@ -353,7 +353,7 @@ export const Icd13 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the digestive system" />
       <Picker.Item value='Diseases or disorders of orofacial complex' label='Diseases or disorders of orofacial complex' />
@@ -388,7 +388,7 @@ export const Icd14 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the skin" />
       <Picker.Item value='Certain skin disorders attributable to infection or infestation' label='Certain skin disorders attributable to infection or infestation' />
@@ -421,7 +421,7 @@ export const Icd15 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the musculoskeletal system or connective tissue " />
       <Picker.Item value='Arthropathies' label='Arthropathies' />
@@ -448,7 +448,7 @@ export const Icd16 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Diseases of the genitourinary system" />
       <Picker.Item value='Diseases of the female genital system' label='Diseases of the female genital system' />
@@ -471,7 +471,7 @@ export const Icd17 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Conditions related to sexual health" />
       <Picker.Item value='Sexual dysfunctions' label='Sexual dysfunctions' />
@@ -495,7 +495,7 @@ export const Icd18 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Pregnancy, childbirth or the puerperium" />
       <Picker.Item value='Abortive outcome of pregnancy' label='Abortive outcome of pregnancy' />
@@ -518,7 +518,7 @@ export const Icd19 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Certain conditions originating in the perinatal period" />
       <Picker.Item value='Fetus or newborn affected by maternal factors or by complications of pregnancy, labour or delivery' label='Fetus or newborn affected by maternal factors or by complications of pregnancy, labour or delivery' />
@@ -545,7 +545,7 @@ export const Icd20 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Developmental anomalies" />
       <Picker.Item value='Structural developmental anomalies primarily affecting one body system' label='Structural developmental anomalies primarily affecting one body system' />
@@ -563,7 +563,7 @@ export const Icd21 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Symptoms, signs or clinical findings, not elsewhere classified" />
       <Picker.Item value='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system ' label='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system ' />
@@ -591,7 +591,7 @@ export const Icd22 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Injury, poisoning or certain other consequences of external causes  " />
       <Picker.Item value='Injuries to the head' label='Injuries to the head' />
@@ -623,7 +623,7 @@ export const Icd23 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="External causes of morbidity or mortality" />
       <Picker.Item value='Unintentional causes' label='Unintentional causes' />
@@ -646,7 +646,7 @@ export const Icd24 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Factors influencing health status or contact with health services" />
       <Picker.Item value='Reasons for contact with the health services ' label='Reasons for contact with the health services ' />
@@ -662,7 +662,7 @@ export const Icd25 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Codes for special purposes" />
       <Picker.Item value='International provisional assignment of new diseases of uncertain aetiology and emergency use' label='International provisional assignment of new diseases of uncertain aetiology and emergency use' />
@@ -676,7 +676,7 @@ export const Icd26 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Supplementary Chapter Traditional Medicine Conditions - Module I " />
       <Picker.Item value='Traditional medicine disorders (TM1)' label='Traditional medicine disorders (TM1)' />
@@ -692,7 +692,7 @@ export const Icd27 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Supplementary section for functioning assessment " />
       <Picker.Item value='WHODAS 2.0 36-item version' label='WHODAS 2.0 36-item version' />
@@ -707,7 +707,7 @@ export const Icd28 = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="Extension Codes" />
       <Picker.Item value='Severity Scale Value' label='Severity Scale Value' />
@@ -733,7 +733,7 @@ export const Icd10Diagnosis = (value, action, language) => {
     <Picker
       selectedValue={value}
       onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
+      style={[styles.picker, { width: '100%' }]}
     >
       <Picker.Item value='' label="None" />
       <Picker.Item value='Certain infectious and parasitic diseases' label="Certain infectious and parasitic diseases" />
