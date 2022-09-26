@@ -41,6 +41,7 @@ export const Icd1 = (value, action, language) => {
       <Picker.Item value='Infections of the fetus or newborn' label='Infections of the fetus or newborn' />
       <Picker.Item value='Human prion diseases' label='Human prion diseases' />
       <Picker.Item value='CA40 Pneumonia' label='CA40 Pneumonia' />
+      <Picker.Item value='1H0Z Infection, unspecified' label='1H0Z Infection, unspecified' />
     </Picker>
   )
 }
@@ -79,10 +80,11 @@ export const Icd3 = (value, action, language) => {
       <Picker.Item value='Neoplasms of haematopoietic or lymphoid tissues' label='Neoplasms of haematopoietic or lymphoid tissues' />
       <Picker.Item value='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system' label='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system' />
       <Picker.Item value='Inherited cancer-predisposing syndromes' label='Inherited cancer-predisposing syndromes' />
+      <Picker.Item value='3C0Y Other specified diseases of the blood or blood-forming organs' label='3C0Y Other specified diseases of the blood or blood-forming organs' />
+      <Picker.Item value='3C0Z Diseases of the blood or blood-forming organs, unspecified' label='3C0Z Diseases of the blood or blood-forming organs, unspecified' />
     </Picker>
   )
 }
-
 
 export const Icd4 = (value, action, language) => {
   return (
@@ -102,6 +104,8 @@ export const Icd4 = (value, action, language) => {
       <Picker.Item value='4B40 Diseases of thymus' label='4B40 Diseases of thymus' />
       <Picker.Item value='Organ specific autoimmune disorders' label='Organ specific autoimmune disorders' />
       <Picker.Item value='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system' label='Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system' />
+      <Picker.Item value='4B4Y Other specified diseases of the immune system' label='4B4Y Other specified diseases of the immune system' />
+      <Picker.Item value='4B4Z Diseases of the immune system, unspecified' label='4B4Z Diseases of the immune system, unspecified' />
     </Picker>
   )
 }
@@ -122,7 +126,6 @@ export const Icd5 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd6 = (value, action, language) => {
   return (
@@ -156,10 +159,11 @@ export const Icd6 = (value, action, language) => {
       <Picker.Item value='07 Sleep-wake disorders' label='07 Sleep-wake disorders' />
       <Picker.Item value='Sexual dysfunctions' label='Sexual dysfunctions' />
       <Picker.Item value='Gender incongruence' label='Gender incongruence' />
+      <Picker.Item value='6E8Y Other specified mental, behavioural or neurodevelopmental disorders' label='6E8Y Other specified mental, behavioural or neurodevelopmental disorders' />
+      <Picker.Item value='6E8Z Mental, behavioural or neurodevelopmental disorders, unspecified' label='6E8Z Mental, behavioural or neurodevelopmental disorders, unspecified' />
     </Picker>
   )
 }
-
 
 export const Icd7 = (value, action, language) => {
   return (
@@ -175,10 +179,11 @@ export const Icd7 = (value, action, language) => {
       <Picker.Item value='Circadian rhythm sleep-wake disorders' label='Circadian rhythm sleep-wake disorders' />
       <Picker.Item value='Sleep-related movement disorders' label='Sleep-related movement disorders' />
       <Picker.Item value='Parasomnia disorders' label='Parasomnia disorders' />
+      <Picker.Item value='7B2Y Other specified sleep-wake disorders' label="7B2Y Other specified sleep-wake disorders" />
+      <Picker.Item value='7B2Z Sleep-wake disorders, unspecified' label="7B2Z Sleep-wake disorders, unspecified" />
     </Picker>
   )
 }
-
 
 export const Icd8 = (value, action, language) => {
   return (
@@ -220,7 +225,6 @@ export const Icd8 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd9 = (value, action, language) => {
   return (
@@ -279,7 +283,6 @@ export const Icd10 = (value, action, language) => {
   )
 }
 
-
 export const Icd11 = (value, action, language) => {
   return (
     <Picker
@@ -317,7 +320,6 @@ export const Icd11 = (value, action, language) => {
   )
 }
 
-
 export const Icd12 = (value, action, language) => {
   return (
     <Picker
@@ -345,7 +347,6 @@ export const Icd12 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd13 = (value, action, language) => {
   return (
@@ -382,7 +383,6 @@ export const Icd13 = (value, action, language) => {
   )
 }
 
-
 export const Icd14 = (value, action, language) => {
   return (
     <Picker
@@ -416,7 +416,6 @@ export const Icd14 = (value, action, language) => {
   )
 }
 
-
 export const Icd15 = (value, action, language) => {
   return (
     <Picker
@@ -444,7 +443,6 @@ export const Icd15 = (value, action, language) => {
   )
 }
 
-
 export const Icd16 = (value, action, language) => {
   return (
     <Picker
@@ -467,7 +465,6 @@ export const Icd16 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd17 = (value, action, language) => {
   return (
@@ -493,7 +490,6 @@ export const Icd17 = (value, action, language) => {
   )
 }
 
-
 export const Icd18 = (value, action, language) => {
   return (
     <Picker
@@ -516,7 +512,6 @@ export const Icd18 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd19 = (value, action, language) => {
   return (
@@ -545,7 +540,6 @@ export const Icd19 = (value, action, language) => {
   )
 }
 
-
 export const Icd20 = (value, action, language) => {
   return (
     <Picker
@@ -563,7 +557,6 @@ export const Icd20 = (value, action, language) => {
     </Picker>
   )
 }
-
 
 export const Icd21 = (value, action, language) => {
   return (
@@ -837,8 +830,62 @@ const EditExamination = (props) => {
     if (!!event.event_metadata) {
       const metadataObj = JSON.parse(event.event_metadata)
       setExaminationComplaint(metadataObj.examinationComplaint)
-      setActiveConditions(metadataObj.activeConditions)
-      setInactiveConditions(metadataObj.inactiveConditions)
+      setActiveConditions1(metadataObj.activeConditions1)
+      setActiveConditions2(metadataObj.activeConditions2)
+      setActiveConditions3(metadataObj.activeConditions3)
+      setActiveConditions4(metadataObj.activeConditions4)
+      setActiveConditions5(metadataObj.activeConditions5)
+      setActiveConditions6(metadataObj.activeConditions6)
+      setActiveConditions7(metadataObj.activeConditions7)
+      setActiveConditions8(metadataObj.activeConditions8)
+      setActiveConditions9(metadataObj.activeConditions9)
+      setActiveConditions10(metadataObj.activeConditions10)
+      setActiveConditions11(metadataObj.activeConditions11)
+      setActiveConditions12(metadataObj.activeConditions12)
+      setActiveConditions13(metadataObj.activeConditions13)
+      setActiveConditions14(metadataObj.activeConditions14)
+      setActiveConditions15(metadataObj.activeConditions15)
+      setActiveConditions16(metadataObj.activeConditions16)
+      setActiveConditions17(metadataObj.activeConditions17)
+      setActiveConditions18(metadataObj.activeConditions18)
+      setActiveConditions19(metadataObj.activeConditions19)
+      setActiveConditions20(metadataObj.activeConditions20)
+      setActiveConditions21(metadataObj.activeConditions21)
+      setActiveConditions22(metadataObj.activeConditions22)
+      setActiveConditions23(metadataObj.activeConditions23)
+      setActiveConditions24(metadataObj.activeConditions24)
+      setActiveConditions25(metadataObj.activeConditions25)
+      setActiveConditions26(metadataObj.activeConditions26)
+      setActiveConditions27(metadataObj.activeConditions27)
+      setActiveConditions28(metadataObj.activeConditions28)
+      setInactiveConditions1(metadataObj.inactiveConditions1)
+      setInactiveConditions2(metadataObj.inactiveConditions2)
+      setInactiveConditions3(metadataObj.inactiveConditions3)
+      setInactiveConditions4(metadataObj.inactiveConditions4)
+      setInactiveConditions5(metadataObj.inactiveConditions5)
+      setInactiveConditions6(metadataObj.inactiveConditions6)
+      setInactiveConditions7(metadataObj.inactiveConditions7)
+      setInactiveConditions8(metadataObj.inactiveConditions8)
+      setInactiveConditions9(metadataObj.inactiveConditions9)
+      setInactiveConditions10(metadataObj.inactiveConditions10)
+      setInactiveConditions11(metadataObj.inactiveConditions11)
+      setInactiveConditions12(metadataObj.inactiveConditions12)
+      setInactiveConditions13(metadataObj.inactiveConditions13)
+      setInactiveConditions14(metadataObj.inactiveConditions14)
+      setInactiveConditions15(metadataObj.inactiveConditions15)
+      setInactiveConditions16(metadataObj.inactiveConditions16)
+      setInactiveConditions17(metadataObj.inactiveConditions17)
+      setInactiveConditions18(metadataObj.inactiveConditions18)
+      setInactiveConditions19(metadataObj.inactiveConditions19)
+      setInactiveConditions20(metadataObj.inactiveConditions20)
+      setInactiveConditions21(metadataObj.inactiveConditions21)
+      setInactiveConditions22(metadataObj.inactiveConditions22)
+      setInactiveConditions23(metadataObj.inactiveConditions23)
+      setInactiveConditions24(metadataObj.inactiveConditions24)
+      setInactiveConditions25(metadataObj.inactiveConditions25)
+      setInactiveConditions26(metadataObj.inactiveConditions26)
+      setInactiveConditions27(metadataObj.inactiveConditions27)
+      setInactiveConditions28(metadataObj.activeConditions28)
       setIllnessHistory(metadataObj.illnessHistory)
     }
   }, [props])
