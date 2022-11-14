@@ -81,3 +81,16 @@ Creating APK
 -----------------
 A tutorial for building an APK can be found here: https://reactnative.dev/docs/signed-apk-android. You can also build the APK in Android Studio by adding Run/Debug configurations in your Android Studio project. Select the gradle project in the configuration (~/android) and the Gradle task ‘assembleRelease’.
 
+To Fix the Gradle Build after JCenter is down:
+---------------------------------------------
+In file build.gradle:
+- Update jcenter() in code to mavenCentral()
+- Add the following to allprojects {}:
+  allprojects {
+    configurations.all {
+        resolutionStrategy {
+            // Remove this override in 0.65+, as a proper fix is included in react-native itself.
+            force "com.facebook.react:react-native:" + REACT_NATIVE_VERSION
+        }
+    }
+  }
