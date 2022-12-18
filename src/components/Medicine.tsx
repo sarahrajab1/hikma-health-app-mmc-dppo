@@ -13,20 +13,22 @@ import radioButtons from './shared/RadioButtons';
 
 export const MedicineDisplay = (metadataObj, language) => {
   return (<View>
-    <Text>On Stain: {!!metadataObj.onStain ? "YES" : "NO"}</Text>
-    <Text>Name of statin and dose: {metadataObj.stainNameDose} </Text>
+    <Text>On Statin: { metadataObj.onStatin === null ? '' : !!metadataObj.onStatin ? "YES" : "NO"}</Text>
+    <Text>Name of statin and dose: {metadataObj.statinNameDose} </Text>
     <Text>Current diabetes medications and doses: {metadataObj.diabetes}</Text>
     <Text>Current HTN medications and doses: {metadataObj.htn}</Text>
     <Text>Current non-diabetes medications: {metadataObj.nonDiabetes} </Text>
+    <Text>Other medicines: {metadataObj.otherMedicines} </Text>
   </View>)
 }
 
 const Medicine = (props) => {
-  const [onStain, setOnStain] = useState(null);
-  const [stainNameDose, setStainNameDose] = useState(null);
+  const [onStatin, setOnStatin] = useState(null);
+  const [statinNameDose, setStatinNameDose] = useState(null);
   const [diabetes, setDiabetes] = useState(null);
   const [nonDiabetes, setNonDiabetes] = useState(null);
   const [htn, setHtn] = useState(null);
+  const [otherMedicines, setOtherMedicines] = useState(null);
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
 
   const patientId = props.navigation.getParam('patientId');
@@ -41,11 +43,12 @@ const Medicine = (props) => {
       event_type: EventTypes.Medicine,
       event_metadata: JSON.stringify({
         doctor: userName,
-        onStain,
-        stainNameDose,
+        onStatin,
+        statinNameDose,
         diabetes,
         htn,
-        nonDiabetes
+        nonDiabetes,
+        otherMedicines
       })
     }).then(() => {
       props.navigation.navigate('NewVisit')
@@ -62,16 +65,18 @@ const Medicine = (props) => {
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Medication/Pharmacy:</Text>
         </View>
         <View style={styles.responseRow}>
-						{radioButtons({ field: onStain, action: setOnStain, prompt: 'On Stain', language })}
+						{radioButtons({ field: onStatin, action: setOnStatin, prompt: 'On Statin', language })}
 					</View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Stain Name and Dose:</Text>
+          <Text style={{ color: '#FFFFFF' }}>Statin Name and Dose:</Text>
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
-            onChangeText={(text) => setStainNameDose(text)}
-            value={stainNameDose}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setStatinNameDose(text)}
+            value={statinNameDose}
           />
         </View>
         <View style={[styles.responseRow, { paddingBottom: 0 }]}>
@@ -79,7 +84,9 @@ const Medicine = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setDiabetes(text)}
             value={diabetes}
           />
@@ -89,7 +96,9 @@ const Medicine = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setHtn(text)}
             value={htn}
           />
@@ -99,9 +108,23 @@ const Medicine = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setNonDiabetes(text)}
             value={nonDiabetes}
+          />
+        </View>
+        <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+          <Text style={{ color: '#FFFFFF' }}>Other Medicines:</Text>
+        </View>
+        <View style={[styles.responseRow, { padding: 0 }]}>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
+            onChangeText={(text) => setOtherMedicines(text)}
+            value={otherMedicines}
           />
         </View>
         <View style={{ alignItems: 'center' }}>

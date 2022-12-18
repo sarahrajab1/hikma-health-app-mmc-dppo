@@ -5358,6 +5358,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-native-autocomplete-input@^4.1.0":
+  "integrity" "sha512-bLZ9FO3NwcqYY3r6hefEEC4VW45L97kXuCyAqKXW1SJkkG/pGcen6zLq3SMFgoQuG3ryrO/ohz7gme7hFwzjoQ=="
+  "resolved" "https://registry.npmjs.org/react-native-autocomplete-input/-/react-native-autocomplete-input-4.2.0.tgz"
+  "version" "4.2.0"
+
 "react-native-camera-hooks@^0.3.1":
   "integrity" "sha512-mj1t4E6Lg9KDApUrN1N748I1Na5JB5tGGK7UVqNN4edvouPepBssI6b7JILr3lPMYIGTUOvJl80l+m3XH4YDFA=="
   "resolved" "https://registry.npmjs.org/react-native-camera-hooks/-/react-native-camera-hooks-0.3.1.tgz"
@@ -5446,6 +5451,13 @@
   "integrity" "sha512-z3SGLF0mHT+OlJDq7B7h/jXPjWcdBT3V14Le5L2PjntjjWM3+EJzq2BcXDwV+v67KFNJic5pgA26cCmseYek6w=="
   "resolved" "https://registry.npmjs.org/react-native-status-bar-height/-/react-native-status-bar-height-2.6.0.tgz"
   "version" "2.6.0"
+
+"react-native-tag-autocomplete@^1.0.22":
+  "integrity" "sha512-YTeadKxLb14m95LmmHJ9PzVnPD4TTdmb7tc+KZtuMoTNjArWnbKPU6Bgg675fcuEokuLznEHYd/MHIwM2z9aCw=="
+  "resolved" "https://registry.npmjs.org/react-native-tag-autocomplete/-/react-native-tag-autocomplete-1.0.22.tgz"
+  "version" "1.0.22"
+  dependencies:
+    "react-native-autocomplete-input" "^4.1.0"
 
 "react-native-user-avatar@^1.0.8":
   "integrity" "sha512-OYm7cfEt0IjiL739OGwRZoBCCuAn6CectNcyi1tsa5WtDZjQm7eK0B1mymxZfqELZ847wcDIuevHM9obr4+kxw=="

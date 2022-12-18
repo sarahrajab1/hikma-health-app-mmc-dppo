@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { Platform } from 'react-native';
+import { readDir, resumeDownload } from 'react-native-fs';
 export default StyleSheet.create({
   loginContainer: {
     flex: 1,
@@ -44,8 +45,8 @@ export default StyleSheet.create({
     marginBottom: 30,
   },
   logo: {
-    width: 110,
-    height: 140,
+    width: 140,
+    height: 61,
     resizeMode: 'stretch'
   },
   container: {
@@ -97,6 +98,14 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+  },
+  textbox: {
+    height: 120,
+    textAlignVertical: 'top'
+  },
+  smallTextbox: {
+    height: 80,
+    textAlignVertical: 'top'
   },
   text: {
     margin: 10,
@@ -324,6 +333,17 @@ export default StyleSheet.create({
     color: '#FFFFFF',
     height: 50,
     width: 90
+  },
+  inputPicker: {
+    height: 40,
+    width: 90
+  },
+  pickerView: {
+    borderRadius: 12,
+    borderColor: '#EAEAEA',
+    borderWidth: .5,
+    backgroundColor: '#FFFFFF',
+    color: "#000",
   },
   centeredView: {
     flex: 1,

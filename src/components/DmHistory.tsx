@@ -14,148 +14,175 @@ import DatePicker from 'react-native-datepicker';
 
 export const DiabetesType = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label="None" />
-      <Picker.Item value='T1D' label='T1D' />
-      <Picker.Item value='T2D' label='T2D' />
-      <Picker.Item value='GDM' label='GDM' />
-      <Picker.Item value='other' label='Other' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label="" />
+        <Picker.Item value='T1D' label='T1D' />
+        <Picker.Item value='T2D' label='T2D' />
+        <Picker.Item value='GDM' label='GDM' />
+        <Picker.Item value='other' label='Other' />
+      </Picker>
+    </View>
   )
 }
 
 export const Management = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label="None" />
-      <Picker.Item value='Diet Control' label='Diet Control' />
-      <Picker.Item value='Insulin' label='Insulin' />
-      <Picker.Item value='Tablet' label='Tablet' />
-      <Picker.Item value='InsulinAndTablet' label="Insulin & Tablet" />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label="" />
+        <Picker.Item value='Diet Control' label='Diet Control' />
+        <Picker.Item value='Insulin' label='Insulin' />
+        <Picker.Item value='Tablet' label='Tablet' />
+        <Picker.Item value='InsulinAndTablet' label="Insulin & Tablet" />
+      </Picker>
+    </View>
   )
 }
 
 export const FamilyHistory = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='no' label='No' />
-      <Picker.Item value='Mother' label='mother' />
-      <Picker.Item value='Father' label='Father' />
-      <Picker.Item value='Siblings' label="Siblings" />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='no' label='No' />
+        <Picker.Item value='Mother' label='mother' />
+        <Picker.Item value='Father' label='Father' />
+        <Picker.Item value='Siblings' label="Siblings" />
+      </Picker>
+    </View>
   )
 }
 
 export const Smoker = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='never' label="Never" />
-      <Picker.Item value='current' label='Current' />
-      <Picker.Item value='stopped' label='Stopped' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='never' label="Never" />
+        <Picker.Item value='current' label='Current' />
+        <Picker.Item value='stopped' label='Stopped' />
+      </Picker>
+    </View>
   )
 }
 
 export const Alcohol = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='never' label='Never' />
-      <Picker.Item value='current' label='Current' />
-      <Picker.Item value='stopped' label='Stopped' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='never' label='Never' />
+        <Picker.Item value='current' label='Current' />
+        <Picker.Item value='stopped' label='Stopped' />
+      </Picker>
+    </View>
   )
 }
 
 export const CardiacProblems = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label="None" />
-      <Picker.Item value='Ischemic heart disease' label='Ischemic heart disease' />
-      <Picker.Item value='Congestive heart failure' label='Congestive heart failure' />
-      <Picker.Item value='others' label='Others' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='No' label="No" />
+        <Picker.Item value='Ischemic heart disease' label='Ischemic heart disease' />
+        <Picker.Item value='Congestive heart failure' label='Congestive heart failure' />
+        <Picker.Item value='others' label='Others' />
+      </Picker>
+    </View>
   )
 }
 
 export const HfSign = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='Absent' label='Absent' />
-      <Picker.Item value='Present' label='Present' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='Absent' label='Absent' />
+        <Picker.Item value='Present' label='Present' />
+      </Picker>
+    </View>
   )
 }
 
 export const Hypertension = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='Absent' label='Absent' />
-      <Picker.Item value='Present' label='Present' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='Absent' label='Absent' />
+        <Picker.Item value='Present' label='Present' />
+      </Picker>
+    </View>
   )
 }
 
 export const RenalProblem = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='No' label='No' />
-      <Picker.Item value='Proteinuria  Raised serum creatinine Dialysis' label='Proteinuria  Raised serum creatinine Dialysis' />
-      <Picker.Item value='History of transplantation' label='History of transplantation' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='No' label='No' />
+        <Picker.Item value='Proteinuria  Raised serum creatinine Dialysis' label='Proteinuria  Raised serum creatinine Dialysis' />
+        <Picker.Item value='History of transplantation' label='History of transplantation' />
+      </Picker>
+    </View>
   )
 }
 
 
 export const EyeProblem = (value, action, language) => {
   return (
-    <Picker
-      selectedValue={value}
-      onValueChange={value => action(value)}
-      style={[styles.picker, { width: 180 }]}
-    >
-      <Picker.Item value='' label="Eye problem" />
-      <Picker.Item value='No' label='No' />
-      <Picker.Item value='Cataract' label='Cataract' />
-      <Picker.Item value='Retinopathy' label='Retinopathy' />
-      <Picker.Item value='Other' label='Other' />
-    </Picker>
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label="" />
+        <Picker.Item value='No' label='No' />
+        <Picker.Item value='Cataract' label='Cataract' />
+        <Picker.Item value='Retinopathy' label='Retinopathy' />
+        <Picker.Item value='Other' label='Other' />
+      </Picker>
+    </View>
   )
 }
 
@@ -213,32 +240,6 @@ const DmHistory = (props) => {
   const visitId = props.navigation.getParam('visitId');
   const userName = props.navigation.getParam('userName');
 
-  // useEffect(() => {
-  //   database.getLatestPatientEventByType(patientId, EventTypes.DmHistory).then((response: any) => {
-  //     if (response.length > 0) {
-  //       const responseObj = JSON.parse(response)
-  //       setDiagnosisAge(responseObj.diagnosisAge)
-  //       setDmDuration(responseObj.dmDuration)
-  //       setManagement(responseObj.management)
-  //       setFamilyHistory(responseObj.familyHistory)
-  //       setSmoker(responseObj.smoker)
-  //       setAlcohol(responseObj.alcohol)
-  //       setCardiacProblem(responseObj.cardiacProblem)
-  //       setHfSign(responseObj.hfSign)
-  //       setHypertension(responseObj.hypertension)
-  //       setRenalProblem(responseObj.renalProblem)
-  //       setEyeProblem(responseObj.eyeProblem)
-  //       setHypoglycemiaRequiring(responseObj.hypoglycemiaRequiring)
-  //       setDka(responseObj.dka)
-  //       setMyocardial(responseObj.myocardial)
-  //       setCerebralStroke(responseObj.cerebralStroke)
-  //       setLimbAmputation(responseObj.limbAmputation)
-  //       setRetinalExamination(responseObj.retinalExamination)
-  //       setRetinalExaminationDate(responseObj.retinalExaminationDate)
-  //     }
-  //   })
-  // }, [])
-
   const submit = async () => {
     database.addEvent({
       id: uuid(),
@@ -285,6 +286,8 @@ const DmHistory = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
+            multiline={true}
+            numberOfLines={10}
             style={styles.inputs}
             onChangeText={(text) => setDiagnosisAge(text)}
             value={diagnosisAge}
@@ -295,36 +298,58 @@ const DmHistory = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
+            multiline={true}
+            numberOfLines={10}
             style={styles.inputs}
             onChangeText={(text) => setDmDuration(text)}
             value={dmDuration}
           />
         </View>
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Type of diabetes</Text>
-        {DiabetesType(diabetesType, setDiabetesType, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Management</Text>
-        {Management(management, setManagement, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Family History</Text>
-        {FamilyHistory(familyHistory, setFamilyHistory, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Smoker</Text>
-        {Smoker(smoker, setSmoker, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Alcohol</Text>
-        {Alcohol(alcohol, setAlcohol, language)}
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Associated illness: </Text>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Type of diabetes</Text>
+          {DiabetesType(diabetesType, setDiabetesType, language)}
         </View>
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Cardiac Problems</Text>
-        {CardiacProblems(cardiacProblem, setCardiacProblem, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>H.F Sign</Text>
-        {HfSign(hfSign, setHfSign, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Hypertension</Text>
-        {Hypertension(hypertension, setHypertension, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Renal Problem</Text>
-        {RenalProblem(hfSign, setRenalProblem, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Eye Problem</Text>
-        {EyeProblem(eyeProblem, setEyeProblem, language)}
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Management</Text>
+          {Management(management, setManagement, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Family History</Text>
+          {FamilyHistory(familyHistory, setFamilyHistory, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Smoker</Text>
+          {Smoker(smoker, setSmoker, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Alcohol</Text>
+          {Alcohol(alcohol, setAlcohol, language)}
+        </View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Specific relevant history:</Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Associated illness: </Text>
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Cardiac Problems</Text>
+          {CardiacProblems(cardiacProblem, setCardiacProblem, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>H.F Sign</Text>
+          {HfSign(hfSign, setHfSign, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Hypertension</Text>
+          {Hypertension(hypertension, setHypertension, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Renal Problem</Text>
+          {RenalProblem(renalProblem, setRenalProblem, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF'}}>Eye Problem</Text>
+          {EyeProblem(eyeProblem, setEyeProblem, language)}
+        </View>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Specific relevant history:</Text>
         </View>
         <View style={styles.responseRow}>
           {radioButtons({ field: hypoglycemiaRequiring, action: setHypoglycemiaRequiring, prompt: 'Hypoglycemia requiring assistance:', language })}

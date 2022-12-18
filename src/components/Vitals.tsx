@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, Button
 } from 'react-native';
@@ -16,10 +16,10 @@ export const VitalsDisplay = (metadataObj, language) => {
       flexDirection: 'row',
       flexWrap: 'wrap',
     }}>
-        <Text style={{ width: '50%' }}>Height: {metadataObj.height} m</Text>
+        <Text style={{ width: '50%' }}>Height: {metadataObj.height} cm</Text>
         <Text style={{ width: '50%' }}>Weight: {metadataObj.weight} kg</Text>
         <Text style={{ width: '50%' }}>BMI: {metadataObj.bmi} </Text>
-        <Text style={{ width: '50%' }}>Waist circumference: {metadataObj.waistCircumference} </Text>
+        <Text style={{ width: '50%' }}>Waist circumference: {metadataObj.waistCircumference} cm</Text>
         <Text style={{ width: '50%' }}>BP: {metadataObj.systolic}/{metadataObj.diastolic} </Text>
         <Text style={{ width: '50%' }}>Pulse: {metadataObj.pulse} </Text>
     </View>)
@@ -45,6 +45,20 @@ const Vitals = (props) => {
 
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
+
+  useEffect(() => {
+    calculateBmi()
+    }
+  )
+
+  const calculateBmi = async () => {
+    let calcBmi = 0
+    if( height && height > 0 && weight && weight > 0){
+      const meterHeight = height / 100
+      calcBmi = (weight / (height * height)) * 10000
+    }
+    setBmi(calcBmi.toFixed(2))
+  }
 
   const setVitals = async () => {
     database.addEvent({
@@ -86,6 +100,7 @@ const Vitals = (props) => {
           value={height}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>cm</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Weight"
@@ -93,12 +108,14 @@ const Vitals = (props) => {
           value={weight}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>kg</Text>
       </View>
       <View style={[styles.inputRow]}>
         <TextInput
           style={styles.inputs}
+          editable = {false}
           placeholder="bmi"
-          onChangeText={(text) => setBmi(text)}
+          onChangeText={(text) => calculateBmi(text)}
           value={bmi}
           keyboardType='numeric'
           />
@@ -109,6 +126,7 @@ const Vitals = (props) => {
           value={waistCircumference}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>cm</Text>
       </View>
       <View style={styles.inputRow}>
         <TextInput

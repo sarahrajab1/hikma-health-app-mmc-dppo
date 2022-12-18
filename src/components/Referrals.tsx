@@ -9,18 +9,18 @@ import styles from './Style';
 import { EventTypes } from '../enums/EventTypes';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
-import examinationRadioButtons from './shared/ExaminationRadioButtons';
 import radioButtons from './shared/RadioButtons';
-
+import DatePicker from 'react-native-datepicker';
 
 export const ReferralsDisplay = (metadataObj, language) => {
   return (<View>
-    <Text>Diabetic Educator: {!!metadataObj.diabetesEducation ? "Normal" : "Abnormal"}</Text>
-    <Text>Dietitian: {!!metadataObj.dietitian ? "Normal" : "Abnormal"}</Text>
-    <Text>Ophthalmologist: {!!metadataObj.ophthalmologist ? "Normal" : "Abnormal"}</Text>
-    <Text>Foot care clinic: {!!metadataObj.footCareClinic ? "Normal" : "Abnormal"}</Text>
-    <Text>Social Services: {!!metadataObj.socialServices ? "Normal" : "Abnormal"}</Text>
-    <Text>Psychologist: {!!metadataObj.psychologist ? "Normal" : "Abnormal"}</Text>
+    <Text>Diabetic Educator: {metadataObj.diabeticEducator === null ? "" : !!metadataObj.diabeticEducator ? "Yes" : "No"}</Text>
+    <Text>Dietitian: {metadataObj.dietitian === null ? "" : !!metadataObj.dietitian ? "Yes" : "No"}</Text>
+    <Text>Ophthalmologist: {metadataObj.ophthalmologist === null ? "" : !!metadataObj.ophthalmologist ? "Yes" : "No"}</Text>
+    <Text>Foot care clinic: {metadataObj.footCareClinic === null ? "" : !!metadataObj.footCareClinic ? "Yes" : "No"}</Text>
+    <Text>Social Services: {metadataObj.socialServices === null ? "" : !!metadataObj.socialServices ? "Yes" : "No"}</Text>
+    <Text>Psychologist: {metadataObj.psychologist === null ? "" : !!metadataObj.psychologist ? "Yes" : "No"}</Text>
+    <Text>Referral Date: {metadataObj.referralDate} </Text>
   </View>)
 }
 
@@ -31,8 +31,8 @@ const Referrals = (props) => {
   const [footCareClinic, setFootCareClinic] = useState(null);
   const [socialServices, setSocialServices] = useState(null);
   const [psychologist, setPsychologist] = useState(null);
+  const [referralDate, setReferralDate] = useState(null);
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
-
   const patientId = props.navigation.getParam('patientId');
   const visitId = props.navigation.getParam('visitId');
   const userName = props.navigation.getParam('userName');
@@ -50,7 +50,8 @@ const Referrals = (props) => {
         ophthalmologist,
         footCareClinic,
         socialServices,
-        psychologist
+        psychologist,
+        referralDate
       })
     }).then(() => {
       props.navigation.navigate('NewVisit')
@@ -58,30 +59,52 @@ const Referrals = (props) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
         {Header({ action: () => props.navigation.navigate('NewVisit', { language }), language, setLanguage })}
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Referrals: </Text>
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: diabeticEducator, action: setDiabeticEducator, prompt: 'Diabetic Educator:', language })}
+          {radioButtons({ field: diabeticEducator, action: setDiabeticEducator, prompt: 'Diabetic Educator:', language })}
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: dietitian, action: setDietitian, prompt: 'Dietitian:', language })}
+          {radioButtons({ field: dietitian, action: setDietitian, prompt: 'Dietitian:', language })}
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: ophthalmologist, action: setOphthalmologist, prompt: 'Ophthalmologist:', language })}
+          {radioButtons({ field: ophthalmologist, action: setOphthalmologist, prompt: 'Ophthalmologist:', language })}
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: footCareClinic, action: setFootCareClinic, prompt: 'Foot care clinic:', language })}
+          {radioButtons({ field: footCareClinic, action: setFootCareClinic, prompt: 'Foot care clinic:', language })}
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: socialServices, action: setSocialServices, prompt: 'Social Services:', language })}
+          {radioButtons({ field: socialServices, action: setSocialServices, prompt: 'Social Services:', language })}
         </View>
 		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: psychologist, action: setPsychologist, prompt: 'Psychologist:', language })}
+          {radioButtons({ field: psychologist, action: setPsychologist, prompt: 'Psychologist:', language })}
         </View>
+      <View style={styles.inputRow}>
+        <DatePicker
+          style={styles.datePicker}
+          date={referralDate}
+          mode="date"
+          placeholder="Retinal Examination Date"
+          format="YYYY-MM-DD"
+          minDate="1900-05-01"
+          maxDate={new Date().toISOString().split('T')[0]}
+          confirmBtnText={LocalizedStrings[language].confirm}
+          cancelBtnText={LocalizedStrings[language].cancel}
+          customStyles={{
+            dateInput: {
+              alignItems: 'flex-start',
+              borderWidth: 0
+            }
+          }}
+          androidMode='spinner'
+          onDateChange={(date) => setReferralDate(date)}
+        />
+      </View>
+
         <View style={{ alignItems: 'center' }}>
           <Button
             title={LocalizedStrings[language].save}

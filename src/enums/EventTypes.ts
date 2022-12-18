@@ -24,5 +24,6 @@ export enum EventTypes {
   Referrals = 'Referrals',
   FootCareExamination = 'Foot Care Examination',
   LabInvestigation = 'Lab Data and Investigations',
-  OphthalmologyExamination = 'Ophthalmology Examination'
+  OphthalmologyExamination = 'Ophthalmology Examination',
+  DiabetesEducation = 'Diabetes Education'
 }

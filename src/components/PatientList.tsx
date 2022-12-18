@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Image as Image, TextInput, FlatList, TouchableOpacity, ImageBackground, Keyboard, Picker, Modal, TouchableHighlight, Button } from "react-native";
-import { database } from "../storage/Database";
-import { DatabaseSync } from "../storage/Sync";
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, Image as Image, TextInput, FlatList, TouchableOpacity, ImageBackground, Keyboard, Picker, Modal, TouchableHighlight, Button } from 'react-native';
+import { database } from '../storage/Database';
+import { DatabaseSync } from '../storage/Sync';
 import styles from './Style';
-import { iconHash } from '../services/hash'
+import { iconHash } from '../services/hash';
 import { LocalizedStrings } from '../enums/LocalizedStrings';
 import UserAvatar from 'react-native-user-avatar';
 import LanguageToggle from './shared/LanguageToggle';
@@ -29,20 +29,20 @@ const PatientList = (props) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
-  const [searchIconFunction, setSearchIconFunction] = useState(false)
+  const [searchIconFunction, setSearchIconFunction] = useState(false);
   const search = useRef(null);
 
   useEffect(() => {
-    searchPatients()
-  }, [props.navigation.state.params.reloadPatientsToggle, language])
+    searchPatients();
+  }, [props.navigation.state.params.reloadPatientsToggle, language]);
 
   useEffect(() => {
     if (!!props.navigation.getParam('language') && language !== props.navigation.getParam('language')) {
       setLanguage(props.navigation.getParam('language'));
     }
-  }, [props])
+  }, [props]);
 
-  const keyExtractor = (item, index) => index.toString()
+  const keyExtractor = (item, index) => index.toString();
 
   const reloadPatients = () => {
     database.getPatients().then(patients => {
@@ -73,44 +73,44 @@ const PatientList = (props) => {
 
       database.searchPatients(givenNameLC, surnameLC, countryLC, hometownLC, campLC, phoneLC, minYear, maxYear).then(patients => {
         setList(patients);
-      })
+      });
     } else {
-      reloadPatients()
+      reloadPatients();
     }
-    setSearchIconFunction(false)
-  }
+    setSearchIconFunction(false);
+  };
 
   const agePicker = () => {
-    let ages = []
+    let ages = [];
     let i = 0;
     for (i; i < 110; i++) {
-      ages.push(<Picker.Item key={i} value={i} label={i.toString()} />)
+      ages.push(<Picker.Item key={i} value={i} label={i.toString()} />);
     }
     return ages;
-  }
+  };
 
   const logout = () => {
-    setUserId('')
-    props.navigation.navigate('Home', { logout: true })
-  }
+    setUserId('');
+    props.navigation.navigate('Home', { logout: true });
+  };
 
   const displayName = (item) => {
     if (!!item.given_name.content[language] && !!item.surname.content[language]) {
-      return <Text>{`${item.given_name.content[language]} ${item.surname.content[language]}`}</Text>
+      return <Text>{`${item.given_name.content[language]} ${item.surname.content[language]}`}</Text>;
     } else {
-      item.given_name.content[Object.keys(item.given_name.content)[0]]
-      return <Text>{`${item.given_name.content[Object.keys(item.given_name.content)[0]]} ${item.surname.content[Object.keys(item.surname.content)[0]]}`}</Text>
+      item.given_name.content[Object.keys(item.given_name.content)[0]];
+      return <Text>{`${item.given_name.content[Object.keys(item.given_name.content)[0]]} ${item.surname.content[Object.keys(item.surname.content)[0]]}`}</Text>;
     }
-  }
+  };
 
   const displayNameAvatar = (patient) => {
     if (!!patient.given_name.content[language] && !!patient.surname.content[language]) {
-      return `${patient.given_name.content[language]} ${patient.surname.content[language]}`
+      return `${patient.given_name.content[language]} ${patient.surname.content[language]}`;
     } else {
-      patient.given_name.content[Object.keys(patient.given_name.content)[0]]
-      return `${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`
+      patient.given_name.content[Object.keys(patient.given_name.content)[0]];
+      return `${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`;
     }
-  }
+  };
 
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => props.navigation.navigate('PatientView',
@@ -119,11 +119,11 @@ const PatientList = (props) => {
         patient: item,
         reloadPatientsToggle: props.navigation.state.params.reloadPatientsToggle,
         clinicId: clinicId,
-        userId: userId
+        userId: userId,
       }
     )}>
       <View style={styles.cardContent}>
-        <UserAvatar size={100} name={displayNameAvatar(item)} bgColor='#ECECEC' textColor='#6177B7' />
+        <UserAvatar size={100} name={displayNameAvatar(item)} bgColor="#ECECEC" textColor="#6177B7" />
         <View style={{ flexShrink: 1, marginLeft: 20 }}>
           {displayName(item)}
           <View
@@ -135,11 +135,10 @@ const PatientList = (props) => {
           />
           <Text style={{ flexWrap: 'wrap' }}>{`${LocalizedStrings[language].dob}:  ${item.date_of_birth}`}</Text>
           <Text>{`${LocalizedStrings[language].sex}:  ${item.sex}`}</Text>
-          <Text>{`${LocalizedStrings[language].camp}:  ${item.camp}`}</Text>
         </View>
       </View>
     </TouchableOpacity>
-  )
+  );
 
   return (
     <View style={styles.main}>
@@ -154,8 +153,8 @@ const PatientList = (props) => {
           {LanguageToggle({ language, setLanguage })}
           <TouchableOpacity
             onPress={async () => {
-              await databaseSync.performSync(instanceUrl, email, password, language)
-              reloadPatients()
+              await databaseSync.performSync(instanceUrl, email, password, language);
+              reloadPatients();
             }}>
             <View style={[styles.card, { flexDirection: 'row', alignItems: 'center' }]}>
               <Text>{LocalizedStrings[language].sync}</Text>
@@ -167,7 +166,7 @@ const PatientList = (props) => {
         <View style={[styles.searchBar, { backgroundColor: '#00d2a7', borderRadius: 30 }]}>
           <TextInput
             style={[styles.searchInput, { marginLeft: 10 }]}
-            placeholderTextColor='#FFFFFF'
+            placeholderTextColor="#FFFFFF"
             placeholder={LocalizedStrings[language].patientSearch}
             onChangeText={(text) => setGivenName(text)}
             onEndEditing={searchPatients}
@@ -177,11 +176,11 @@ const PatientList = (props) => {
           />
           <TouchableOpacity onPress={() => {
             if (searchIconFunction) {
-              searchPatients()
-              Keyboard.dismiss()
+              searchPatients();
+              Keyboard.dismiss();
             } else {
-              search.current.focus()
-              setSearchIconFunction(true)
+              search.current.focus();
+              setSearchIconFunction(true);
             }
           }}>
             <Image source={require('../images/search.jpg')} style={{ width: 30, height: 30, marginRight: 10 }} />
@@ -213,7 +212,7 @@ const PatientList = (props) => {
             onPress={() => props.navigation.navigate('NewPatient',
               {
                 reloadPatientsToggle: props.navigation.state.params.reloadPatientsToggle,
-                language: language
+                language: language,
               }
             )} />
         </View>
@@ -231,7 +230,7 @@ const PatientList = (props) => {
               <TouchableHighlight
                 onPress={() => {
                   setModalVisible(!modalVisible);
-                  setSearchIconFunction(true)
+                  setSearchIconFunction(true);
                 }}
               >
                 <Image source={require('../images/close.png')} style={{ width: 15, height: 15 }} />
@@ -265,11 +264,6 @@ const PatientList = (props) => {
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <TextInput
-                placeholder={LocalizedStrings[language].camp}
-                onChangeText={(text) => setCamp(text)}
-                value={camp}
-              />
-              <TextInput
                 placeholder={LocalizedStrings[language].phone}
                 onChangeText={(text) => setPhone(text)}
                 value={phone}
@@ -283,7 +277,7 @@ const PatientList = (props) => {
                 onValueChange={value => setMinAge(value)}
                 style={{
                   height: 50,
-                  width: 90
+                  width: 90,
                 }}
               >
                 {agePicker()}
@@ -294,7 +288,7 @@ const PatientList = (props) => {
                 onValueChange={value => setMaxAge(value)}
                 style={{
                   height: 50,
-                  width: 90
+                  width: 90,
                 }}
               >
                 {agePicker()}
@@ -306,24 +300,22 @@ const PatientList = (props) => {
                 title={LocalizedStrings[language].clearFilters}
                 color={'red'}
                 onPress={() => {
-                  reloadPatients()
+                  reloadPatients();
                 }}
-              >
-              </Button>
+               />
               <Button
                 title={LocalizedStrings[language].search}
                 onPress={() => {
-                  Keyboard.dismiss()
+                  Keyboard.dismiss();
                   setModalVisible(!modalVisible);
-                  searchPatients()
-                }}>
-              </Button>
+                  searchPatients();
+                }} />
             </View>
           </View>
         </View>
       </Modal>
     </View>
-  )
-}
+  );
+};
 
 export default PatientList;

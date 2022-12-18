@@ -15,6 +15,7 @@ import { ReferralsDisplay } from "./Referrals"
 import { OphthalmologyExaminationDisplay } from "./OphthalmologyExamination"
 import { FootCareExaminationDisplay } from "./FootCareExamination"
 import { LabInvestigationDisplay } from "./LabInvestigation"
+import { DiabetesEducationDisplay } from "./DiabetesEducation";
 
 
 import Header from "./shared/Header";
@@ -103,6 +104,10 @@ const SnapshotList = (props) => {
       case EventTypes.LabInvestigation:
         eventTypeText = "LabInvestigation"
         display = LabInvestigationDisplay(metadataObj, language)
+        break
+      case EventTypes.DiabetesEducation:
+        eventTypeText = "DiabetesEducation"
+        display = DiabetesEducationDisplay(metadataObj, language)
         break
     }
 

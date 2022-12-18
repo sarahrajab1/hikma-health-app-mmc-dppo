@@ -10,6 +10,17 @@ export interface Patient {
   sex: string
   phone: string
   camp: string
+  locality: string
+  city: string
+  hai_village: string
+  blok_no: string
+  house_no: string
+  occupation: string
+  insurance: string
+  private_insurance: string
+  first_register_date: string
+  id_number: string
+  record_number: string
 }
 
 export interface NewPatient {
@@ -21,4 +32,15 @@ export interface NewPatient {
   hometown: string
   sex: string
   phone: string
+  locality: string
+  city: string
+  hai_village: string
+  blok_no: string
+  house_no: string
+  occupation: string
+  insurance: string
+  private_insurance: string
+  first_register_date: string
+  id_number: string
+  record_number: string
 }

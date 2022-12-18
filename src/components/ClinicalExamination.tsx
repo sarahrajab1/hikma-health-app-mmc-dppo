@@ -83,7 +83,9 @@ const ClinicalExamination = (props) => {
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
             placeholder="Note"
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             onChangeText={(text) => setRespiratorySystemNote(text)}
             value={respiratorySystemNote}
           />
@@ -93,7 +95,9 @@ const ClinicalExamination = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             placeholder="Note"
             onChangeText={(text) => setCvsNote(text)}
             value={cvsNote}
@@ -104,7 +108,9 @@ const ClinicalExamination = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             placeholder="Note"
             onChangeText={(text) => setAbdomenNote(text)}
             value={abdomenNote}
@@ -115,7 +121,9 @@ const ClinicalExamination = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             placeholder="Note"
             onChangeText={(text) => setMusculoskeletalNote(text)}
             value={musculoskeletalNote}
@@ -126,7 +134,9 @@ const ClinicalExamination = (props) => {
         </View>
         <View style={[styles.responseRow, { padding: 0 }]}>
           <TextInput
-            style={styles.inputs}
+            multiline={true}
+            numberOfLines={10}
+            style={[styles.inputs, styles.smallTextbox]}
             placeholder="Note"
             onChangeText={(text) => setCnsNote(text)}
             value={cnsNote}

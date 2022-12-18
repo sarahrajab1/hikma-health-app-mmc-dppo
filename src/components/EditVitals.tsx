@@ -30,6 +30,7 @@ const EditVitals = (props) => {
       setSystolic(metadataObj.systolic)
       setDiastolic(metadataObj.diastolic)
       setPulse(metadataObj.pulse)
+      calculateBmi()
 //       setHeartRate(metadataObj.heartRate)
 //       setSystolic(metadataObj.systolic)
 //       setDiastolic(metadataObj.diastolic)
@@ -40,6 +41,15 @@ const EditVitals = (props) => {
 //       setBloodGlucose(metadataObj.bloodGlucose)
     }
   }, [props])
+
+  const calculateBmi = async () => {
+    let calcBmi = 0
+    if( height && height > 0 && weight && weight > 0){
+      const meterHeight = height / 100
+      calcBmi = (weight / (height * height)) * 10000
+    }
+    setBmi(calcBmi.toFixed(2))
+  }
 
   const setVitals = async () => {
     database.editEvent(
@@ -68,6 +78,7 @@ const EditVitals = (props) => {
           value={height}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>cm</Text>
         <TextInput
           style={styles.inputs}
           placeholder="Weight"
@@ -75,12 +86,14 @@ const EditVitals = (props) => {
           value={weight}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>kg</Text>
       </View>
       <View style={[styles.inputRow]}>
         <TextInput
           style={styles.inputs}
+          editable = {false}
           placeholder="bmi"
-          onChangeText={(text) => setBmi(text)}
+          onChangeText={(text) => calculateBmi(text)}
           value={bmi}
           keyboardType='numeric'
           />
@@ -91,6 +104,7 @@ const EditVitals = (props) => {
           value={waistCircumference}
           keyboardType='numeric'
         />
+        <Text style={{ color: '#FFFFFF' }}>cm</Text>
       </View>
       <View style={styles.inputRow}>
         <TextInput

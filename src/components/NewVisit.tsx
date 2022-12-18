@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  View, Text, Image, TextInput, TouchableOpacity, Picker, ScrollView
+  View, Text, Image, TextInput, TouchableOpacity, Picker, ScrollView, TextBox
 } from 'react-native';
 import styles from './Style';
 import { EventTypes } from '../enums/EventTypes';
@@ -10,6 +10,20 @@ import { LocalizedStrings } from '../enums/LocalizedStrings';
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 import Header from './shared/Header';
+
+export const visitTypes = (value, action, language) => {
+  return (
+    <Picker
+      selectedValue={value}
+      onValueChange={value => action(value)}
+      style={[styles.picker, { width: 180 }]}
+    >
+      <Picker.Item value="" label="Visite Type" />
+      <Picker.Item value="New" label="New" />
+      <Picker.Item value="Follow Up" label="Follow Up" />
+    </Picker>
+  );
+};
 
 const NewVisit = (props) => {
   const [visitType, setVisitType] = useState('');
@@ -97,16 +111,9 @@ const NewVisit = (props) => {
                 database.editVisitDate(visitId, moment(date).toISOString())
               }}
             />
-            <TextInput
-              style={[styles.inputs, { color: typeTextColor }]}
-              placeholder={LocalizedStrings[language].visitType}
-              onChangeText={(text) => {
-                setTypeTextColor('#000000')
-                setVisitType(text)
-              }}
-              onEndEditing={handleSaveVisitType}
-              value={visitType}
-            />
+          <View style={styles.inputRow}>
+            {visitTypes(visitType, setVisitType, language)}
+          </View>
           </View>
         </View>
       }
@@ -176,7 +183,13 @@ const NewVisit = (props) => {
           <View style={styles.actionIcon}>
             <Image source={require('../images/medicalHistory.png')} style={{ width: 50, height: 50 }} />
           </View>
-          <Text style={styles.actionText}>Lab Data and Investigations:</Text>
+          <Text style={styles.actionText}>Lab Data and Investigations</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionButton} onPress={() => props.navigation.navigate('DiabetesEducation', { patientId: patient.id, visitId, userName, language })}>
+          <View style={styles.actionIcon}>
+            <Image source={require('../images/notes.png')} style={{ width: 50, height: 50 }} />
+          </View>
+          <Text style={styles.actionText}>DiabetesEducation</Text>
         </TouchableOpacity>
       </View>
     </View>

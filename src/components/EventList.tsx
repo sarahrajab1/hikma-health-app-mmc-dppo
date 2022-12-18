@@ -18,7 +18,7 @@ import { FootCareExaminationDisplay } from "./FootCareExamination";
 import { LabInvestigationDisplay } from "./LabInvestigation";
 import { OphthalmologyExaminationDisplay } from "./OphthalmologyExamination";
 import { ReferralsDisplay } from "./Referrals";
-
+import { DiabetesEducationDisplay } from "./DiabetesEducation";
 import Header from "./shared/Header";
 
 const EventList = (props) => {
@@ -63,6 +63,34 @@ const EventList = (props) => {
       case EventTypes.Physiotherapy:
         props.navigation.navigate('EditPhysiotherapy', { event, language, userName })
         break
+      case EventTypes.Examination:
+        props.navigation.navigate('EditExamination', { event, language, userName })
+        break
+      case EventTypes.DmHistory:
+        props.navigation.navigate('EditDmHistory', { event, language, userName })
+        break
+      case EventTypes.ClinicalExamination:
+        props.navigation.navigate('EditClinicalExamination', { event, language, userName })
+        break
+      case EventTypes.EndocrinologistCases:
+        props.navigation.navigate('EditEndocrinologistCases', { event, language, userName })
+        break
+      case EventTypes.FootCareExamination:
+        props.navigation.navigate('EditFootCareExamination', { event, language, userName })
+        break
+      case EventTypes.LabInvestigation:
+        props.navigation.navigate('EditLabInvestigation', { event, language, userName })
+        break
+      case EventTypes.Referrals:
+        props.navigation.navigate('EditReferrals', { event, language, userName })
+        break
+      case EventTypes.OphthalmologyExamination:
+        props.navigation.navigate('EditOphthalmologyExamination', { event, language, userName })
+        break
+      case EventTypes.DiabetesEducation:
+        props.navigation.navigate('EditDiabetesEducation', { event, language, userName })
+        break
+
       case EventTypes.Complaint:
       case EventTypes.DentalTreatment:
       case EventTypes.Notes:
@@ -85,7 +113,7 @@ const EventList = (props) => {
         break
       case EventTypes.Vitals:
         eventTypeText = LocalizedStrings[language].vitals
-        display = VitalsDisplay(metadataObj)
+        display = VitalsDisplay(metadataObj, language)
         break
       case EventTypes.ExaminationFull:
         eventTypeText = LocalizedStrings[language].examination
@@ -131,6 +159,10 @@ const EventList = (props) => {
         eventTypeText = 'Ophthalmology Examination'
         display = OphthalmologyExaminationDisplay(metadataObj, language)
         break
+      case EventTypes.DiabetesEducation:
+        eventTypeText = 'Diabetes Education'
+        display = DiabetesEducationDisplay(metadataObj, language)
+        break
       default:
         eventTypeText = item.event_type
         display = <Text>{metadataObj}</Text>
@@ -173,7 +205,6 @@ const EventList = (props) => {
         <Text style={styles.text}>{visit.check_in_timestamp.split('T')[0]}   ({list.length})</Text>
       </View>
       <View style={styles.listContainer}>
-
         <View style={styles.scroll}>
           <FlatList
             keyExtractor={keyExtractor}

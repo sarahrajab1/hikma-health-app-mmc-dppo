@@ -74,7 +74,7 @@ export class DatabaseInitialization {
     );
 
     transaction.executeSql(
-      "CREATE TABLE IF NOT EXISTS patients (id varchar(32) PRIMARY KEY, given_name varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, surname varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, date_of_birth varchar(10), country varchar(32) REFERENCES string_ids(id), hometown varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, phone text, sex varchar(1), image_timestamp text, edited_at text, deleted integer DEFAULT 0);"
+      "CREATE TABLE IF NOT EXISTS patients (id varchar(32) PRIMARY KEY, given_name varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, surname varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, date_of_birth varchar(10), country varchar(32) REFERENCES string_ids(id), hometown varchar(32) REFERENCES string_ids(id) ON DELETE CASCADE, locality text, city text, hai_village text, blok_no text, house_no text, occupation text, insurance text, private_insurance text, first_register_date text, id_number text, record_number text, phone text, sex varchar(1), image_timestamp text, edited_at text, deleted integer DEFAULT 0);"
     );
 
     transaction.executeSql(

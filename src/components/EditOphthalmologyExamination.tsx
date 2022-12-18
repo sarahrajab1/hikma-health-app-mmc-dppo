@@ -55,51 +55,50 @@ const EditOphthalmologyExamination = (props) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.containerLeft}>
-        {Header({action: () => props.navigation.navigate('EventList', { language}), language, setLanguage})}
-
-        <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Ophthalmology Unit Examination: </Text>
-        </View>
-        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Rt Retinal examination:</Text>
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: rtDilatedFundoscopy, action: setRtDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: rtRetinalCamera, action: setRtRetinalCamera, prompt: 'Retinal camera :', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: rtOphthalmologist, action: setRtOphthalmologist, prompt: 'Ophthalmologist assessment:', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: rtFindings, action: setRtFindings, prompt: 'Findings:', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Left Retinal examination:</Text>
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: leftDilatedFundoscopy, action: setLeftDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: leftRetinalCamera, action: setLeftRetinalCamera, prompt: 'Retinal camera :', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: leftOphthalmologist, action: setLeftOphthalmologist, prompt: 'Ophthalmologist assessment:', language })}
-        </View>
-		<View style={[styles.responseRow, { paddingBottom: 0 }]}>
-          {examinationRadioButtons({ field: leftFindings, action: setLeftFindings, prompt: 'Findings:', language })}
-        </View>
-        <View style={{ alignItems: 'center' }}>
-          <Button
-            title={LocalizedStrings[language].save}
-            color={'#F77824'}
-            onPress={() => submitOphthalmologyExamination()} />
-        </View>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <View style={styles.containerLeft}>
+      {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
+      <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
+        <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>OphthalmologyExamination: </Text>
       </View>
-    </ScrollView>
+      <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+        <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Rt Retinal examination:</Text>
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: rtDilatedFundoscopy, action: setRtDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: rtRetinalCamera, action: setRtRetinalCamera, prompt: 'Retinal camera :', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: rtOphthalmologist, action: setRtOphthalmologist, prompt: 'Ophthalmologist assessment:', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: rtFindings, action: setRtFindings, prompt: 'Findings:', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+        <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Left Retinal examination:</Text>
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: leftDilatedFundoscopy, action: setLeftDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: leftRetinalCamera, action: setLeftRetinalCamera, prompt: 'Retinal camera :', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: leftOphthalmologist, action: setLeftOphthalmologist, prompt: 'Ophthalmologist assessment:', language })}
+      </View>
+      <View style={[styles.responseRow, { paddingBottom: 0 }]}>
+        {examinationRadioButtons({ field: leftFindings, action: setLeftFindings, prompt: 'Findings:', language })}
+      </View>
+      <View style={{ alignItems: 'center' }}>
+        <Button
+          title={LocalizedStrings[language].save}
+          color={'#F77824'}
+          onPress={() => submitOphthalmologyExamination()} />
+      </View>
+    </View>
+  </ScrollView>
   );
 };
 

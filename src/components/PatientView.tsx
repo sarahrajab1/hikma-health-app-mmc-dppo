@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity, Button, ScrollView } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TextInput, TouchableOpacity, Button, ScrollView } from 'react-native';
 import { database } from '../storage/Database';
 import styles from './Style';
 import { v4 as uuid } from 'uuid';
-import { EventTypes } from "../enums/EventTypes";
-import { iconHash } from '../services/hash'
-import { User } from "../types/User";
-import { LocalizedStrings } from "../enums/LocalizedStrings";
+import { EventTypes } from '../enums/EventTypes';
+import { iconHash } from '../services/hash';
+import { User } from '../types/User';
+import { LocalizedStrings } from '../enums/LocalizedStrings';
 import UserAvatar from 'react-native-user-avatar';
-import Header from "./shared/Header";
+import Header from './shared/Header';
 
 const PatientView = (props) => {
 
@@ -16,58 +16,58 @@ const PatientView = (props) => {
   const [language, setLanguage] = useState(props.navigation.getParam('language', 'en'));
   const [isEditingSummary, setIsEditingSummary] = useState(false);
   const [userName, setUserName] = useState('');
-  const [summary, setSummary] = useState(LocalizedStrings[(props.navigation.getParam('language', 'en'))].noContent)
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [summary, setSummary] = useState(LocalizedStrings[(props.navigation.getParam('language', 'en'))].noContent);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const clinicId = props.navigation.state.params.clinicId;
   const userId = props.navigation.state.params.userId;
-  const name1 = 'This'
-  const name2 = 'Guy'
+  const name1 = 'This';
+  const name2 = 'Guy';
 
   useEffect(() => {
     setPatient(props.navigation.state.params.patient);
-    let patientId = props.navigation.state.params.patient.id
+    let patientId = props.navigation.state.params.patient.id;
     database.getLatestPatientEventByType(patientId, EventTypes.PatientSummary).then((response: string) => {
       if (response.length > 0) {
-        setSummary(response)
+        setSummary(response);
       } else {
-        setSummary(LocalizedStrings[language].noContent)
+        setSummary(LocalizedStrings[language].noContent);
       }
-    })
-  }, [props, language])
+    });
+  }, [props, language]);
 
   useEffect(() => {
     if (language !== props.navigation.getParam('language')) {
       setLanguage(props.navigation.getParam('language'));
     }
-  }, [props])
+  }, [props]);
 
   useEffect(() => {
     database.getUser(userId).then((user: User) => {
-      if (!!user.name.content[language]) {
-        setUserName(user.name.content[language])
+      if (user.name.content[language]) {
+        setUserName(user.name.content[language]);
       } else {
-        setUserName(user.name.content[Object.keys(user.name.content)[0]])
+        setUserName(user.name.content[Object.keys(user.name.content)[0]]);
       }
-    })
-  }, [])
+    });
+  }, []);
 
   const displayName = (patient) => {
     if (!!patient.given_name.content[language] && !!patient.surname.content[language]) {
-      return <Text>{`${patient.given_name.content[language]} ${patient.surname.content[language]}`}</Text>
+      return <Text>{`${patient.given_name.content[language]} ${patient.surname.content[language]}`}</Text>;
     } else {
-      patient.given_name.content[Object.keys(patient.given_name.content)[0]]
-      return <Text>{`${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`}</Text>
+      patient.given_name.content[Object.keys(patient.given_name.content)[0]];
+      return <Text>{`${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`}</Text>;
     }
-  }
+  };
 
   const displayNameAvatar = (patient) => {
     if (!!patient.given_name.content[language] && !!patient.surname.content[language]) {
-      return `${patient.given_name.content[language]} ${patient.surname.content[language]}`
+      return `${patient.given_name.content[language]} ${patient.surname.content[language]}`;
     } else {
-      patient.given_name.content[Object.keys(patient.given_name.content)[0]]
-      return `${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`
+      patient.given_name.content[Object.keys(patient.given_name.content)[0]];
+      return `${patient.given_name.content[Object.keys(patient.given_name.content)[0]]} ${patient.surname.content[Object.keys(patient.surname.content)[0]]}`;
     }
-  }
+  };
 
   const handleSaveSummary = () => {
     database.addEvent({
@@ -75,9 +75,9 @@ const PatientView = (props) => {
       patient_id: patient.id,
       visit_id: null,
       event_type: EventTypes.PatientSummary,
-      event_metadata: summary
-    }).then(() => console.log('patient summary saved'))
-  }
+      event_metadata: summary,
+    }).then(() => console.log('patient summary saved'));
+  };
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -86,7 +86,7 @@ const PatientView = (props) => {
         <View style={[styles.card, { flex: 1, elevation: 0 }]}>
           <View style={[styles.cardContent, { alignItems: 'flex-start' }]}>
 
-            <UserAvatar size={100} name={displayNameAvatar(patient)} bgColor='#ECECEC' textColor='#6177B7'/>
+            <UserAvatar size={100} name={displayNameAvatar(patient)} bgColor="#ECECEC" textColor="#6177B7"/>
             <View style={{ marginLeft: 20, flex: 1 }}>
 
               <View style={{ flex: 1 }}>
@@ -102,7 +102,6 @@ const PatientView = (props) => {
               <View style={{ flex: 1 }}>
                 <Text>{`${LocalizedStrings[language].dob}:  ${patient.date_of_birth}`}</Text>
                 <Text>{`${LocalizedStrings[language].sex}:  ${patient.sex}`}</Text>
-                <Text>{`${LocalizedStrings[language].camp}:  ${patient.camp}`}</Text>
               </View>
 
               <View style={{ flex: 1, marginBottom: 15 }}>
@@ -147,23 +146,23 @@ const PatientView = (props) => {
                 id: newVisitId,
                 patient_id: patient.id,
                 clinic_id: clinicId,
-                provider_id: userId
-              })
+                provider_id: userId,
+              });
               props.navigation.navigate('NewVisit',
                 {
                   language: language,
                   patient: patient,
-                  visitId: newVisitId.replace(/-/g, ""),
-                  userName: userName
+                  visitId: newVisitId.replace(/-/g, ''),
+                  userName: userName,
                 }
-              )
+              );
             }} />
         </View>
         <View style={{ alignItems: 'stretch', flex: 1 }}>
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('VisitList', { language: language, patient: patient, userName })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>{LocalizedStrings[language].visitHistory}</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -171,7 +170,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.ExaminationFull, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Examination</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -179,7 +178,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Vitals, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Vitals</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -187,7 +186,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.DmHistory, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>DM History</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -195,7 +194,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Medicine, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>{LocalizedStrings[language].medicine}</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -203,7 +202,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.ClinicalExamination, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Clinical Examination</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -211,7 +210,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.EndocrinologistCases, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Endocrinologist Cases</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -219,7 +218,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.Referrals, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Referrals History</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -227,7 +226,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.OphthalmologyExamination, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Ophthalmology Examination</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -235,7 +234,7 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.FootCareExamination, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Foot Care Examination History</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
@@ -243,16 +242,24 @@ const PatientView = (props) => {
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.LabInvestigation, language: language, patient: patient })}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.gridItemText}>Lab Data and Investigations History</Text>
+              <Text style={styles.gridItemText}>></Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={() => props.navigation.navigate('SnapshotList', { eventType: EventTypes.DiabetesEducation, language: language, patient: patient })}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={styles.gridItemText}>Diabetes Education</Text>
               <Text style={styles.gridItemText}>></Text>
             </View>
           </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
-  )
+  );
 
-}
+};
 
 export default PatientView;

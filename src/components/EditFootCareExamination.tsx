@@ -9,18 +9,21 @@ import { LocalizedStrings } from '../enums/LocalizedStrings';
 import Header from './shared/Header';
 
 export const StatusPicker  = (value, action, language) => {
-	return (
-	  <Picker
-		selectedValue={value}
-		onValueChange={value => action(value)}
-		style={[styles.picker, { width: 180 }]}
-	  >
-		<Picker.Item value='absent' label='absent' />
-		<Picker.Item value='intact' label='intact' />
-		<Picker.Item value='impaired' label='impaired' />
-	  </Picker>
-	)
-  }
+  return (
+    <View style={styles.pickerView}>
+      <Picker
+        selectedValue={value}
+        onValueChange={value => action(value)}
+        style={[styles.inputPicker, { width: 180 }]}
+      >
+        <Picker.Item value='' label='' />
+        <Picker.Item value='absent' label='absent' />
+        <Picker.Item value='intact' label='intact' />
+        <Picker.Item value='impaired' label='impaired' />
+      </Picker>
+    </View>
+  )
+}
 
 const EditFootCareExamination = (props) => {
   const event = props.navigation.getParam('event');
@@ -76,37 +79,57 @@ const EditFootCareExamination = (props) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerLeft}>
-        {Header({action: () => props.navigation.navigate('EventList', { language}), language, setLanguage})}
+        {Header({ action: () => props.navigation.navigate('EventList', { language }), language, setLanguage })}
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
-          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>FootCare Unit Examination: </Text>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Foot Care Unit Examination (Sensation): </Text>
         </View>
+				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Rt Foot examination:</Text>
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Vibration Sense </Text>
+				  {StatusPicker(rtVibration, setRtVibration, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>10g Monofilament </Text>
+				  {StatusPicker(rtMonofilament, setRtMonofilament, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Distal foot pulse </Text>
+				  {StatusPicker(rtDistalPulse, setRtDistalPulse, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Dorsalis pedis  pulse</Text>
+				  {StatusPicker(rtDorsalisPulse, setRtDorsalisPulse, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Posterior tibial pulse</Text>
+				  {StatusPicker(rtPosteriorPulse, setRtPosteriorPulse, language)}
+				</View>
         <View style={[styles.responseRow, { paddingVertical: 0 }]}>
-			<Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Rt Foot examination:</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Left Foot examination:</Text>
         </View>
-		<Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
-		{StatusPicker(rtVibration, setRtVibration, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>10g Monofilament </Text>
-		{StatusPicker(rtMonofilament, setRtMonofilament, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Distal foot pulse </Text>
-		{StatusPicker(rtDistalPulse, setRtDistalPulse, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Dorsalis pedis  pulse</Text>
-		{StatusPicker(rtDorsalisPulse, setRtDorsalisPulse, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Posterior tibial pulse</Text>
-		{StatusPicker(rtPosteriorPulse, setRtPosteriorPulse, language)}
-		<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-			<Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Left Foot examination:</Text>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Vibration Sense </Text>
+				  {StatusPicker(leftVibration, setLeftVibration, language)}
         </View>
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Vibration Sense </Text>
-		{StatusPicker(leftVibration, setLeftVibration, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>10g Monofilament </Text>
-		{StatusPicker(leftMonofilament, setLeftMonofilament, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Distal foot pulse </Text>
-		{StatusPicker(leftDistalPulse, setLeftDistalPulse, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Dorsalis pedis  pulse</Text>
-		{StatusPicker(leftDorsalisPulse, setLeftDorsalisPulse, language)}
-        <Text style={{ color: '#FFFFFF', paddingTop: 15, paddingRight: 5, paddingLeft: 5 }}>Posterior tibial pulse</Text>
-		{StatusPicker(leftPosteriorPulse, setLeftPosteriorPulse, language)}
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>10g Monofilament </Text>
+				  {StatusPicker(leftMonofilament, setLeftMonofilament, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Distal foot pulse </Text>
+				  {StatusPicker(leftDistalPulse, setLeftDistalPulse, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Dorsalis pedis  pulse</Text>
+				  {StatusPicker(leftDorsalisPulse, setLeftDorsalisPulse, language)}
+        </View>
+        <View style={[styles.responseRow, { flexDirection: 'row', flex: 1, justifyContent: 'space-between' }]}>
+          <Text style={{ color: '#FFFFFF' }}>Posterior tibial pulse</Text>
+				  {StatusPicker(leftPosteriorPulse, setLeftPosteriorPulse, language)}
+        </View>
         <View style={{ alignItems: 'center' }}>
           <Button
             title={LocalizedStrings[language].save}

@@ -38,6 +38,8 @@ import Referrals from '../components/Referrals'
 import EditReferrals from '../components/EditReferrals'
 import LabInvestigation from '../components/LabInvestigation'
 import EditLabInvestigation from '../components/EditLabInvestigation'
+import DiabetesEducation from '../components/DiabetesEducation'
+import EditDiabetesEducation from '../components/EditDiabetesEducation'
 
 const rootNavigator = createStackNavigator(
   {
@@ -290,6 +292,20 @@ const rootNavigator = createStackNavigator(
       screen: EditLabInvestigation,
       navigationOptions: () => ({
         title: `EditLabInvestigation`,
+        header: null
+      })
+    },
+    DiabetesEducation: {
+      screen: DiabetesEducation,
+      navigationOptions: () => ({
+        title: `DiabetesEducation`,
+        header: null
+      })
+    },
+    EditDiabetesEducation: {
+      screen: EditDiabetesEducation,
+      navigationOptions: () => ({
+        title: `EditDiabetesEducation`,
         header: null
       })
     },

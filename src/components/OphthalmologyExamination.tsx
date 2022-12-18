@@ -15,16 +15,16 @@ import examinationRadioButtons from './shared/ExaminationRadioButtons';
 export const  OphthalmologyExaminationDisplay = (metadataObj, language) => {
   return (
     <View>
-	    <Text>Rt Retinal examination:</Text>
-	    <Text>Dilated fundoscopy: {!!metadataObj.rtDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
-      <Text>Retinal camera: {!!metadataObj.rtRetinalCamera ? "Normal" : "Abnormal"}</Text>
-      <Text>Ophthalmologist assessment: {!!metadataObj.rtOphthalmologist ? "Normal" : "Abnormal"}</Text>
-      <Text>Findings: {!!metadataObj.rtFindings ? "Normal" : "Abnormal"}</Text>
-      <Text>Left Retinal examination:</Text>
-			<Text>Dilated fundoscopy: {!!metadataObj.leftDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
-      <Text>Retinal camera: {!!metadataObj.leftRetinalCamera ? "Normal" : "Abnormal"}</Text>
-      <Text>Ophthalmologist assessment: {!!metadataObj.leftOphthalmologist ? "Normal" : "Abnormal"}</Text>
-      <Text>Findings: {!!metadataObj.leftFindings ? "Normal" : "Abnormal"}</Text>
+	    <Text style={[{ fontSize: 16, fontWeight: 'bold' }]}>Rt Retinal examination:</Text>
+      <Text>Dilated fundoscopy: {metadataObj.rtDilatedFundoscopy === null ? "" : !!metadataObj.rtDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
+      <Text>Retinal camera: { metadataObj.rtRetinalCamera === null ? "" : !!metadataObj.rtRetinalCamera ? "Normal" : "Abnormal"}</Text>
+      <Text>Ophthalmologist assessment: { metadataObj.rtOphthalmologist === null ? "" : !!metadataObj.rtOphthalmologist ? "Normal" : "Abnormal"}</Text>
+      <Text>Findings: { metadataObj.rtFindings === null ? "" : !!metadataObj.rtFindings ? "Normal" : "Abnormal"}</Text>
+      <Text style={[{ fontSize: 16, fontWeight: 'bold' }]}>Left Retinal examination:</Text>
+			<Text>Dilated fundoscopy: { metadataObj.leftDilatedFundoscopy === null ? "" : !!metadataObj.leftDilatedFundoscopy ? "Normal" : "Abnormal"}</Text>
+      <Text>Retinal camera: { metadataObj.leftRetinalCamera === null ? "" : !!metadataObj.leftRetinalCamera ? "Normal" : "Abnormal"}</Text>
+      <Text>Ophthalmologist assessment: { metadataObj.leftOphthalmologist === null ? "" : !!metadataObj.leftOphthalmologist ? "Normal" : "Abnormal"}</Text>
+      <Text>Findings: { metadataObj.leftFindings === null ? "" : !!metadataObj.leftFindings ? "Normal" : "Abnormal"}</Text>
     </View>)
 }
 
@@ -72,8 +72,8 @@ const OphthalmologyExamination = (props) => {
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'stretch', }}>
           <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>OphthalmologyExamination: </Text>
         </View>
-				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Rt Retinal examination:</Text>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Rt Retinal examination:</Text>
         </View>
 				<View style={[styles.responseRow, { paddingBottom: 0 }]}>
           {examinationRadioButtons({ field: rtDilatedFundoscopy, action: setRtDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
@@ -87,8 +87,8 @@ const OphthalmologyExamination = (props) => {
 				<View style={[styles.responseRow, { paddingBottom: 0 }]}>
           {examinationRadioButtons({ field: rtFindings, action: setRtFindings, prompt: 'Findings:', language })}
         </View>
-				<View style={[styles.responseRow, { paddingVertical: 0 }]}>
-          <Text style={{ color: '#FFFFFF' }}>Left Retinal examination:</Text>
+        <View style={[styles.responseRow, { paddingVertical: 0 }]}>
+          <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>Left Retinal examination:</Text>
         </View>
 				<View style={[styles.responseRow, { paddingBottom: 0 }]}>
           {examinationRadioButtons({ field: leftDilatedFundoscopy, action: setLeftDilatedFundoscopy, prompt: 'Dilated fundoscopy:', language })}
